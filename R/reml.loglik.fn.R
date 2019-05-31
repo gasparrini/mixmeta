@@ -19,7 +19,7 @@ function(par, Xlist, Zlist, ylist, Slist, nalist, rep, k, q, nall, const,
   res <- -0.5*(crossprod(gls$invtUy-gls$invtUX%*%gls$coef))
   # DETERMINANT COMPONENTS
   det1 <- -sum(sapply(gls$Ulist,function(U) sum(log(diag(U)))))
-  tXWXtot <- sumlist(lapply(gls$invtUXlist,crossprod))
+  tXWXtot <- sumList(lapply(gls$invtUXlist,crossprod))
   det2 <- -sum(log(diag(chol(tXWXtot))))
 #
   # RETURN

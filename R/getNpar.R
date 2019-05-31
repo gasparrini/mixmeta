@@ -7,7 +7,7 @@ function(bscov, k, q)  {
 ################################################################################
 # FUNCTION TO DETERMINE THE NUMBER OF PARAMETERS FOR EACH RANDOM LEVEL
 #
-  npar <- sapply(seq(bscov), function(i) {
+  npar <- sapply(seq_along(bscov), function(i) {
     d <- k*q[i]
     switch(bscov[i],
       unstr = d*(d+1)/2,

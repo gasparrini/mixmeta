@@ -22,6 +22,8 @@ The dataset contains the results of 56 studies that evaluate the effect of a mod
 
 \source{
 Kostantopoulos S (2011). Fixed effects and variance components estimation in three-level meta-analysis. \emph{Research Synthesis Methods}. \bold{2}(1):61--76.
+
+Sera F, Gasparrini A (2019). An extended mixed-effects framework for meta-analysis.\emph{Statistics in Medicine}. In submission.
 }
 
 \note{

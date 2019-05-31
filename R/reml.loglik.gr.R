@@ -20,7 +20,7 @@ function(par, Xlist, Zlist, ylist, Slist, nalist, rep, k, q, nall, const,
 #
   # COMPUTE QUANTITIES
   tXWXlist <- lapply(gls$invtUXlist,crossprod)
-  tXWXtot <- sumlist(lapply(gls$invtUXlist,crossprod))
+  tXWXtot <- sumList(lapply(gls$invtUXlist,crossprod))
   invtXWXtot <- chol2inv(chol(tXWXtot))
   invSigmalist <- lapply(gls$invUlist,tcrossprod)
   reslist <- mapply(function(X,y) y-X%*%gls$coef,

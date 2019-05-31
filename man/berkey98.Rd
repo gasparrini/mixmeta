@@ -28,6 +28,8 @@ The dataset contains the results of 5 published trials comparing surgical and no
 Berkey CS, et al. (1998). Meta-analysis of multiple outcomes by regression with random effects. \emph{Statistics in Medicine}. \bold{17}:2537--2550.
 
 Berkey CS., et al. (1995). Multiple-outcomes meta-analysis of treatments for periodontal disease. \emph{Journal of Dental Research}. \bold{74}(4):1030--1039.
+
+Sera F, Gasparrini A (2019). An extended mixed-effects framework for meta-analysis.\emph{Statistics in Medicine}. In submission.
 }
 
 \examples{

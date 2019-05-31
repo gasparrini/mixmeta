@@ -57,13 +57,13 @@ The functions \code{ml.igls} and \code{reml.rigls} return an intermediate list o
 }
 
 \references{
+Sera F, Gasparrini A (2019). An extended mixed-effects framework for meta-analysis.\emph{Statistics in Medicine}. In submission.
+
 Goldstein H (1992). Efficient computational procedures for the estimation of parameters in multilevel models based on iterative generalized least squares. \emph{Computational Statistics \& Data Analysis}. \bold{13}(1):63--71.
 
 Goldstein H (1986). Multilevel mixed linear model analysis using iterative generalized least squares. \emph{Biometrika}. \bold{73}(1):43--56.
 
 Goldstein H (1989). Restricted unbiased iterative generalized least-squares estimation. \emph{Biometrika}. \bold{76}(3):622--623.
-
-Gasparrini A, Armstrong B, Kenward MG (2012). Multivariate meta-analysis for non-linear and other multi-parameter associations. \emph{Statistics in Medicine}. \bold{31}(29):3821--3839. [Freely available \href{http://www.ag-myresearch.com/2012_gasparrini_statmed.html}{\bold{here}}].
 }
 
 \author{Antonio Gasparrini <\email{antonio.gasparrini@lshtm.ac.uk}> and Francesco Sera <\email{francesco.sera@lshtm.ac.uk}>}

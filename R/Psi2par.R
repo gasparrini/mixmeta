@@ -8,10 +8,10 @@ function(Psi, bscov, k, q, fix) {
 # FUNCTION TO EXTRACT THE PARAMETERS DEFINING THE RANDOM PART
 #
   # IF ONLY ONE MATRIX, CREATE THE LIST
-  if(!is.list(Psi)) Psi <- list(Psi)
+  Psi <- getList(Psi)
 #
   # EXTRACT THE PARAMETERS
-  par <- lapply(seq(bscov), function(i) {
+  par <- lapply(seq_along(bscov), function(i) {
     d <- k*q[i]
     switch(bscov[i],
       # IF UNSTRUCTURED, LOWER TRIANGULAR OF THE CHOLESKY DECOMPOSITION
@@ -61,6 +61,6 @@ function(Psi, bscov, k, q, fix) {
   # NAMES
   names(par) <- names(bscov)
 #
-  # TRANSFORM LIST IN VECTOR IF ONLY ONE COMPONENT
-  if(is.list(par)&&length(par)==1L) par[[1]] else par
+  # DROP THE LIST STRUCTURE IF ONLY ONE COMPONENT
+  dropList(par)
 }

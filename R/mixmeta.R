@@ -29,14 +29,14 @@ function(formula, S, data, random, method="reml", bscov="unstr", offset, subset,
   # CREATE THE ORIGINAL CALL AND THE MODIFIED VERSION
   call  <- match.call()
   mcall <- match.call(expand.dots=FALSE)
-  mn <- match(c("formula", "data", "subset", "weights", "na.action", "offset"),
+  mn <- match(c("formula", "data", "subset", "na.action", "offset"), 
     names(mcall), 0L)
   mcall <- mcall[c(1L, mn)]
   mcall$drop.unused.levels <- TRUE
   mcall[[1L]] <- as.name("model.frame")
 #
   # CREATE THE FULL FORMULA INCLUDING FIXED AND RANDOM TERMS
-  mcall$formula <- getFullformula(formula, random)
+  mcall$formula <- getFullFormula(formula, random)
 #
 ################################################################################
 # DERIVE THE MODEL FRAME (SPECIAL HANDLING OF MISSING VALUES) AND TERMS
@@ -48,11 +48,11 @@ function(formula, S, data, random, method="reml", bscov="unstr", offset, subset,
   class(mf) <- c("data.frame.mixmeta",class(mf))
   # NOW HANDLE THE MISSING
   if(missing(na.action)) na.action <- getOption("na.action")
-  if(length(na.action)) mf <- do.call(na.action,list(mf))
+  if(length(na.action)) mf <- do.call(na.action, list(mf))
   # RETURN mf IF REQUIRED
   if(method=="model.frame") return(mf)
-  # SAVE TERMS (ONLY FIXED PART)
-  terms <- terms(formula)
+  # SAVE TERMS (BOTH FIXED AND RANDOM)
+  terms <- attr(mf, "terms")
 #
 ################################################################################
 # GROUPS AND RE-ORDER
@@ -70,7 +70,8 @@ function(formula, S, data, random, method="reml", bscov="unstr", offset, subset,
 #
   # GET DESIGN MATRIX AND RESPONSE (AS MATRIX) FOR FIXED PART
   y <- as.matrix(model.response(mf,"numeric"))
-  X <- model.matrix(formula[c(1L,3L)],mf,contrasts)
+  fixcontr <- getContrXlev(formula[c(1L,3L)], contrasts)
+  X <- model.matrix(formula[c(1L,3L)], mf, fixcontr)
   offset <- as.vector(model.offset(mf))
   if(!is.null(offset)) {
     if(length(offset)!=NROW(y))
@@ -103,13 +104,19 @@ function(formula, S, data, random, method="reml", bscov="unstr", offset, subset,
   fit$offset <- offset[order(ord)]
   fit$S <- S[order(ord),]
 #
-  # ADD OTHER COMPONENTS
+  # ADD CALL, FORMULA, MODEL, AND TERMS
   fit$call <- call
   fit$formula <- formula
   fit$model <- if(model) mf <- mf[order(ord),,drop=FALSE] else NULL
   fit$terms <- terms
-  fit$contrasts <- attr(X,"contrasts")
-  fit$xlevels <- .getXlevels(terms(mcall$formula),mf)
+#
+  # ADD CONTRASTS AND LEVELS (FOR BOTH FIXED AND RANDOM)
+  contrasts <- do.call(c,lapply(c(getList(X),getList(Z)), attr, "contrasts"))
+  fit$contrasts <- if(length(contrasts)) 
+    contrasts[!duplicated(names(contrasts))] else NULL
+  fit$xlevels <- .getXlevels(terms,mf)
+#
+  # ADD THE REST
   fit$na.action <- attr(mf,"na.action")
   fit$method <- method
   fit$random <- random

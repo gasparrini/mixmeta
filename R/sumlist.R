@@ -1,7 +1,7 @@
 ###
 ### R routines for the R package mixmeta (c)
 #
-sumlist <-
+sumList <-
 function(list) {
 #
 ################################################################################

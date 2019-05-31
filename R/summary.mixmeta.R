@@ -42,7 +42,7 @@ function(object, ci.level=0.95, ...) {
 # RANDOM EFFECTS
 #
   corRandom <- if(object$method!="fixed") {
-    if(!is.list(Psi)) Psi <- list(Psi)
+    Psi <- getList(Psi)
     cor <- lapply(Psi,function(x) {
       ran.sd <- sqrt(diag(x))
       x/outer(ran.sd,ran.sd)

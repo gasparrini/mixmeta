@@ -2,7 +2,7 @@
 ### R routines for the R package mixmeta (c)
 #
 getZ <-
-function(random, data, contrasts)  {
+function(random, data, contrasts=NULL)  {
 #
 ################################################################################
 # FUNCTION TO DEFINE THE DESIGN MATRICES FOR THE RANDOM PART
@@ -11,14 +11,16 @@ function(random, data, contrasts)  {
   if(is.null(random)) return(NULL)
 #
   # OTHERWISE, GENERATE THE LIST
-  if(!is.list(random)) random <- list(random)
+  random <- getList(random)
   Z <- lapply(random, function(form) {
     # REMOVE THE GROUPING FACTOR FROM THE FORMULA
     form[[2]] <- form[[2]][[2]]
+    # EXTRACT THE CONTRASTS
+    contr <- getContrXlev(form, contrasts)
     # DERIVE THE MODEL MATRIX
-    model.matrix(form,data,contrasts)
+    model.matrix(form, data, contr)
   })
 #
   # RETURN A SINGLE MATRIX IF SINGLE LEVEL
-  if(length(Z)==1L) Z[[1L]] else Z
+  dropList(Z)
 }

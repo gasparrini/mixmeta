@@ -76,13 +76,9 @@ Several method functions for regression objects are available, either default or
 }
 
 \references{
+Sera F, Gasparrini A. (2019). An extended mixed-effects framework for meta-analysis.\emph{Statistics in Medicine}. In submission.
+  
 Gasparrini A, Armstrong B, Kenward MG (2012). Multivariate meta-analysis for non-linear and other multi-parameter associations. \emph{Statistics in Medicine}. \bold{31}(29):3821--3839. [Freely available \href{http://www.ag-myresearch.com/2012_gasparrini_statmed.html}{\bold{here}}].
-
-Pinheiro JC and Bates DM (2000). \emph{Mixed-Effects Models in S and S-PLUS}. New York, Springer Verlag.
-
-Jackson D, Riley R, White IR (2011). Multivariate meta-analysis: Potential and promise. \emph{Statistics in Medicine}. \bold{30}(20);2481--2498.
-
-Crippa A, et al. (2018). One-stage dose-response meta-analysis for aggregated data. \emph{Statistical Methods in Medical Research}.  DOI: 10.1177/0962280218773122.
 }
 
 \author{Antonio Gasparrini <\email{antonio.gasparrini@lshtm.ac.uk}> and Francesco Sera <\email{francesco.sera@lshtm.ac.uk}>}
@@ -152,7 +148,7 @@ S <- as.matrix(fibrinogen[6:15])
 model <- mixmeta(y, S)
 summary(model)
 predict(model, se=TRUE)
-predict(model, se=TRUE, aggregate="y")
+predict(model, se=TRUE, aggregate="outcome")
 
 
 ### OTHER EXTENSIONS

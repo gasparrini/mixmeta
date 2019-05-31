@@ -1,11 +1,11 @@
 ###
 ### R routines for the R package mixmeta (c)
 #
-nobs.mixmeta <-
-function(object, ...) {
+getList <-
+function(object) {
 #
 ################################################################################
-# EXTRACTS THE NUMBER OF OBSERVATIONS USED FOR FITTING. USED BY BIC
+# TRANFORM THE OBJECT IN A LIST
 #
-  object$df$nobs
+  if(is.list(object)) object else list(object)
 }

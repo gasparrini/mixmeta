@@ -17,7 +17,7 @@ function(par, bscov, k, q)  {
     end <- cumsum(npar)
     start <- c(1,end[-length(end)]+1)
     # EXTRACT
-    par <- lapply(seq(bscov), function(i)
+    par <- lapply(seq_along(bscov), function(i)
       if(npar[i]>0) par[start[i]:end[i]] else NULL)
     names(par) <- names(bscov)
   }

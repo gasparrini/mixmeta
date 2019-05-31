@@ -31,6 +31,8 @@ The data provide an example of application of multivariate meta-analysis when th
 Jackson D, Riley R, White IR (2011). Multivariate meta-analysis: Potential and promise. \emph{Statistics in Medicine}. \bold{30}(20);2481--2498.
 
 Tandon S, Tudur-Smith C, Riley RD, et al. (2010). A systematic review of p53 as a prognostic factor of survival in squamous cell carcinoma of the four main anatomical subsites of the head and neck. \emph{Cancer Epidemiology, Biomarkers and Prevention}. \bold{19}(2):574--587.
+
+Sera F, Gasparrini A (2019). An extended mixed-effects framework for meta-analysis.\emph{Statistics in Medicine}. In submission.
 }
 
 \examples{

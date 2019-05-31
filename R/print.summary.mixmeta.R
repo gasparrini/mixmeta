@@ -70,8 +70,8 @@ function(x, digits=4, report=c("sd","var"), ...) {
 #
   if(!x$method=="fixed") {
     cat("Random-effects (co)variance components", "\n", sep="")
-    Psi <- if(is.list(x$Psi)) x$Psi else list(x$Psi)
-    random <- if(is.list(x$random)) x$random else list(x$random)
+    Psi <- getList(x$Psi)
+    random <- getList(x$random)
     report <- match.arg(report, c("sd","var"))
 #
     # LOOP

@@ -3,14 +3,14 @@
 #
 blup.mixmeta <-
 function(object, se=FALSE, pi=FALSE, vcov=FALSE, pi.level=0.95, level, format,
-  aggregate=c("stat","y"), ...) {
+  aggregate=c("stat","outcome"), ...) {
 #
 ################################################################################
 # CHECK ARGUMENTS AND SET DEFAULTS
 #
   if(missing(format)) format <- ifelse(vcov&&object$dim$k>1,"list","matrix")
   format <- match.arg(format,c("matrix","list"))
-  aggregate <- match.arg(aggregate,c("stat","y"))
+  aggregate <- match.arg(aggregate,c("stat","outcome"))
   if(missing(level)) level <- length(object$dim$q)
   if(object$method=="fixed") level <- 0L
   if(level<0L||level>length(object$dim$q))
@@ -102,17 +102,18 @@ function(object, se=FALSE, pi=FALSE, vcov=FALSE, pi.level=0.95, level, format,
     # BIND
     stderr <- sqrt(diag(V))
     seqlist <- lapply(seq(length(blup)/k),function(i) c(i*k-k+1,i*k))
-    blup <- do.call(rbind,lapply(seqlist, function(x) blup[x[1]:x[2],]))
-    V <- do.call(rbind,lapply(seqlist, function(x) vechMat(V[x[1]:x[2],x[1]:x[2]])))
-    stderr <- do.call(rbind,lapply(seqlist, function(x) stderr[x[1]:x[2]]))
+    blup <- rbindList(lapply(seqlist, function(x) blup[x[1]:x[2],]), k)
+    V <- rbindList(lapply(seqlist, function(x) vechMat(V[x[1]:x[2],x[1]:x[2]])),
+      k*(k+1)/2)
+    stderr <- rbindList(lapply(seqlist, function(x) stderr[x[1]:x[2]]), k)
     # RETURN
     return(list(blup,V,stderr))
   })
 #
   # EXTRACT, RE-ORDER, NAMES
-  blup <- do.call(rbind,lapply(complist,function(x) x[[1]]))[order(ord),,drop=FALSE]
-  V <- do.call(rbind,lapply(complist,function(x) x[[2]]))[order(ord),,drop=FALSE]
-  stderr <- do.call(rbind,lapply(complist,function(x) x[[3]]))[order(ord),,drop=FALSE]
+  blup <- rbindList(lapply(complist,"[[",1), k)[order(ord),,drop=FALSE]
+  V <- rbindList(lapply(complist,"[[",2), k*(k+1)/2)[order(ord),,drop=FALSE]
+  stderr <- rbindList(lapply(complist,"[[",3), k)[order(ord),,drop=FALSE]
   colnames(blup) <- colnames(stderr) <- object$lab$k
 #
   # PAD WITH MISSING OBSERVATIONS
@@ -135,7 +136,7 @@ function(object, se=FALSE, pi=FALSE, vcov=FALSE, pi.level=0.95, level, format,
 # AGGREGATE AND RETURN
 #
   # IF ONLY 1 OUTCOME, FORCE THE AGGREGATION ON IT
-  if(format=="matrix" && object$dim$k==1) {
+  if(format=="matrix" && k==1) {
     rownames(blup) <- nm
     if(se) blup <- cbind(blup,stderr)
     if(pi) blup <- cbind(blup,pilb,piub)
@@ -149,13 +150,13 @@ function(object, se=FALSE, pi=FALSE, vcov=FALSE, pi.level=0.95, level, format,
     if(vcov) blup$vcov <- V
     for(i in seq(blup)) rownames(blup[[i]]) <- nm
   # WHEN AGGREGATE ON OUTCOME (BUT NO vcov)
-  } else if(format=="matrix" && any(se,pi) && !vcov && aggregate=="y") {
+  } else if(format=="matrix" && any(se,pi) && !vcov && aggregate=="outcome") {
     rownames(blup) <- nm
     blup <- lapply(colnames(blup), function(j) cbind(blup=blup[,j],se=stderr[,j],
       pi.lb=pilb[,j],pi.ub=piub[,j])[,c(TRUE,se,pi,pi)])
     names(blup) <- object$lab$k
   # WHEN LIST, OR vcov AND AGGREGATE ON OUTCOME
-  } else if(format=="list" || (vcov && aggregate=="y")) {
+  } else if(format=="list" || (vcov && aggregate=="outcome")) {
     blup <- lapply(seq(nrow(blup)),function(i) {
       temp <- list(blup=blup[i,])
       if(se) temp$se <- stderr[i,]
@@ -165,7 +166,7 @@ function(object, se=FALSE, pi=FALSE, vcov=FALSE, pi.level=0.95, level, format,
         dimnames(temp$vcov) <- list(object$lab$k,object$lab$k)
       }
       temp <- lapply(temp,function(x) if(any(is.na(x))) NA else x)
-      return(if(length(temp)>1L) temp else temp[[1]])
+      return(dropList(temp))
     })
     names(blup) <- nm
   } else rownames(blup) <- nm

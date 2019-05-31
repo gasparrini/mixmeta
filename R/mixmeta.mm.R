@@ -15,7 +15,7 @@ function(Xlist, ylist, Slist, nalist, k, m, p, nall, control, ...) {
     W[!na,!na] <- tcrossprod(invU)
     return(W)},gls$invUlist,nalist,SIMPLIFY=FALSE)
   I <- diag(m)
-  W <- do.call("cbind",lapply(seq(Wlist), function(i) I[,i] %x% Wlist[[i]]))
+  W <- do.call("cbind",lapply(seq_along(Wlist), function(i) I[,i] %x% Wlist[[i]]))
   na <- unlist(nalist)
   X <- matrix(0,m*k,k*p)
   X[!na,] <- do.call("rbind",Xlist)
@@ -23,7 +23,7 @@ function(Xlist, ylist, Slist, nalist, k, m, p, nall, control, ...) {
   y[!na] <- unlist(ylist)
 #
   # HAT MATRIX
-  tXWXtot <- sumlist(lapply(gls$invtUXlist,crossprod))
+  tXWXtot <- sumList(lapply(gls$invtUXlist,crossprod))
   invtXWXtot <- chol2inv(chol(tXWXtot))
   H <- X %*% invtXWXtot %*% crossprod(X,W)
   IminusH <- diag(m*k)-H
@@ -40,7 +40,7 @@ function(Xlist, ylist, Slist, nalist, k, m, p, nall, control, ...) {
   ind <- (seq(m)-1)*k
   indrow <- rep(ind,length(ind))
   indcol <- rep(ind,each=length(ind))
-  tBA <- sumlist(lapply(seq(indrow), function(i) {
+  tBA <- sumList(lapply(seq(indrow), function(i) {
     row <- indrow[i]+(seq(k))
     col <- indcol[i]+(seq(k))
     t(B[row,col]%x%A[row,col])}))

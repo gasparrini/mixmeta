@@ -29,7 +29,7 @@ Objects of class \code{"mixmeta"} are lists with defined components. Dimensions 
   \item{call }{ the function call.}
   \item{formula }{ the formula for the fixed-effects part of the model. See \code{\link{mixmetaFormula}}.}
   \item{model }{ the model frame used for fitting. Reported if \code{model=TRUE} in \code{\link{mixmeta}}. See \code{\link[=model.frame.mixmeta]{model.frame}}.}
-  \item{terms }{ the \code{\link{terms}} object representing the fitted model.}
+  \item{terms }{ the \code{\link{terms}} object representing both the fixed-effects and the random-effects parts of the fitted model.}
   \item{contrasts }{ (where relevant) the contrasts used.}
   \item{xlevels }{ (where relevant) a record of the levels of the factors used in fitting.}
   \item{na.action }{ (where relevant) information returned by \code{\link[=model.frame.mixmeta]{model.frame}} on the special handling of NAs. See info on \code{\link[=na.omit.data.frame.mixmeta]{missing values}}.}
@@ -48,11 +48,11 @@ Specific methods are also available for \code{\link[=model.frame.mixmeta]{model.
 
 Printing functions for the objects of classes defined above are also provided. \code{anova} methods for performing tests in \code{mixmeta} objects are in development.
 
-All the methods above are visible (exported from the namespace) and documented. In additions, several default method functions for regression are also  applicable to objects of class \code{"mixmeta"}, such as \code{\link{fitted}}, \code{\link{residuals}}, \code{\link{AIC}}, \code{\link{BIC}} and \code{\link{update}}, among others.
+All the methods above are visible (exported from the namespace) and documented. In additions, several default method functions for regression are also  applicable to objects of class \code{"mixmeta"}, such as \code{\link{fitted}}, \code{\link{residuals}}, \code{\link{AIC}} and \code{\link{BIC}}, \code{\link{drop1}} and \code{\link{add1}}, or \code{\link{update}}, among others.
 }
 
 \references{
-Gasparrini A, Armstrong B, Kenward MG (2012). Multivariate meta-analysis for non-linear and other multi-parameter associations. \emph{Statistics in Medicine}. \bold{31}(29):3821--3839. [Freely available \href{http://www.ag-myresearch.com/2012_gasparrini_statmed.html}{\bold{here}}].
+Sera F, Gasparrini A (2019). An extended mixed-effects framework for meta-analysis.\emph{Statistics in Medicine}. In submission.
 }
 
 \author{Antonio Gasparrini <\email{antonio.gasparrini@lshtm.ac.uk}> and Francesco Sera <\email{francesco.sera@lshtm.ac.uk}>}

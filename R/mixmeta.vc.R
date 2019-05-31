@@ -21,7 +21,7 @@ function(Xlist, ylist, Slist, nalist, k, m, p, nall, control, ...) {
     gls <- glsfit(Xlist,ylist,Sigmalist,onlycoef=FALSE)
   #
     # HAT MATRIX COMPONENTS
-    tXWXtot <- sumlist(lapply(gls$invtUXlist,crossprod))
+    tXWXtot <- sumList(lapply(gls$invtUXlist,crossprod))
     invtXWXtot <- chol2inv(chol(tXWXtot))
     # RESIDUALS COMPONENTS
     reslist <- mapply(function(y,X) y-X%*%gls$coef,ylist,Xlist,SIMPLIFY=FALSE)
@@ -52,12 +52,12 @@ function(Xlist, ylist, Slist, nalist, k, m, p, nall, control, ...) {
       return(S0)},Slist,nalist,SIMPLIFY=FALSE)
 #
     # DEFINE NUMBER OF OBSERVATIONS FOR EACH ENTRY
-    ind <- m-sumlist(nalist)
+    ind <- m-sumList(nalist)
     Nmat <- matrix(pmin(rep(ind,k),rep(ind,each=k)),k,k)
 #
     # ESTIMATE: DEPENDENDENT ON SPECIFIC ESTIMATOR CHOSEN
     df.corr <- ifelse(control$vc.adj,0,p)
-    Psi <- sumlist(Mlist)/(Nmat-df.corr) - sumlist(S0list)/Nmat
+    Psi <- sumList(Mlist)/(Nmat-df.corr) - sumList(S0list)/Nmat
 #
     # FORCE SEMI-POSITIVE DEFINITENESS
     Psi <- checkPD(Psi,set.negeigen=control$set.negeigen,force=TRUE,error=FALSE)

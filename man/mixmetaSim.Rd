@@ -22,7 +22,7 @@ In order to simulate \eqn{k} outcomes for \eqn{n} units:
   \item{S }{ series of within-unit variances (or (co)variance matrices for multivariate models) of the estimated outcome(s). For the list of accepted format, see the argument with the same name in \code{\link{mixmeta}}. Covariances or more complex error structures can be passed through additional arguments. See Details below.}
   \item{Psi }{ the random-effects (co)variance matrix (or a list of matrices for multilevel models) of the outcomes. Dimension must be consistent with the specification of the random-effects structure in \code{random}.}
   \item{random }{ a one-sided formula (or a list of formulae for multilevel models) offering a symbolic description of the linear predictor(s) and grouping structure for the random-effects part of the model. See the argument with the same name in \code{\link{mixmeta}}.}
-  \item{data }{ an optional data frame, list or environment (or object coercible by \code{\link{as.data.frame}} to a data frame) containing the variables in \code{random}.}
+  \item{data }{ an optional data frame, list or environment (or object coercible by \code{\link{as.data.frame}} to a data frame), optionally containing the variables in \code{y}, \code{S}, and \code{random}.}
   \item{nsim }{ number of simulation sets.}
   \item{seed }{ an object specifying if and how the random number generator should be initialized.}
   \item{object }{  an object of class \code{"mixmeta"}.}
@@ -32,7 +32,7 @@ In order to simulate \eqn{k} outcomes for \eqn{n} units:
 \details{
 The set(s) of responses can be simulated either from a fitted model, using the method function \code{simulate} for objects of class \code{"mixmeta"}, or directly through the function \code{mixmetaSim}. In the former case, the fitted values from the model are used as mean (expected) outcomes, together with the within-unit and estimated random-effects (co)variance structure. In the latter option, this information need to be provided by the user in the correct dimensions and forms.
 
-Additional arguments can be passed in \code{'...'}. Specifically, arguments \code{Scor} and \code{addSlist} can be added to input missing within-unit error covariances, or to specify more complex within-unit error structures, respectively. Other arguments can be \code{contrasts} (to define the constrasts for the design matrices) or \code{checkPD} (logical, to check the semi-positive definiteness of the matrices). See  \code{\link{mixmeta.control}} for details.
+Additional arguments can be passed in \code{'...'}. Specifically, arguments \code{Scor} and \code{addSlist} can be added to input missing within-unit error covariances, or to specify more complex within-unit error structures, respectively. Another argument can be \code{checkPD} (logical), that checks the semi-positive definiteness of the matrices). See  \code{\link{mixmeta.control}} for details.
 
 The functions simulate the responses for each study separately from a marginal multivariate normal distribution with mean equal to the expected values and (co)variance equal to the sum of the within-unit errors and random-effects components. The computation is identical to that implemented in the function \code{mvrnorm} of the package \pkg{MASS}, involving a eigen decomposition of the marginal (co)variance matrix. Numerical negative definiteness is checked, and positive semi-definiteness then forced by truncating the eigenvalues at a value close to zero (see \code{\link[=mixmeta.control]{control}}).
 }
@@ -42,7 +42,7 @@ If \code{nsim=1}, a matrix or vector of simulated \eqn{k} outcomes for the \eqn{
 }
 
 \references{
-Gasparrini A, Armstrong B, Kenward MG (2012). Multivariate meta-analysis for non-linear and other multi-parameter associations. \emph{Statistics in Medicine}. \bold{31}(29):3821--3839. [Freely available \href{http://www.ag-myresearch.com/2012_gasparrini_statmed.html}{\bold{here}}].
+Sera F, Gasparrini A (2019). An extended mixed-effects framework for meta-analysis.\emph{Statistics in Medicine}. In submission.
 }
 
 \author{Antonio Gasparrini <\email{antonio.gasparrini@lshtm.ac.uk}> and Francesco Sera <\email{francesco.sera@lshtm.ac.uk}>}

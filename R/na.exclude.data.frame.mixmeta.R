@@ -10,7 +10,7 @@ function (object, ...) {
   n <- length(object)
   omit <- FALSE
   omit2 <- TRUE
-  vars <- seq_len(n)
+  vars <- seq(n)
   if(!is.null(y <- model.response(object))) vars <- vars[-1]
 #
   # FIRST IN PREDICTORS (AS USUAL, TO TRUE IF AT LEAST ONE IS MISSING)

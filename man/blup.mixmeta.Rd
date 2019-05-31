@@ -1,6 +1,5 @@
 \name{blup.mixmeta}
 \alias{blup.mixmeta}
-\alias{blup}
 
 \title{ Best Linear Unbiased Predictions from mixmeta Models }
 
@@ -10,7 +9,7 @@ This method function computes (empirical) best linear unbiased predictions from 
 
 \usage{
 \method{blup}{mixmeta}(object, se=FALSE, pi=FALSE, vcov=FALSE, pi.level=0.95, level, format,
-  aggregate=c("stat","y"), \dots)
+  aggregate=c("stat","outcome"), \dots)
 }
 
 \arguments{
@@ -42,7 +41,9 @@ The results may be aggregated in matrices (the default), or returned as lists, d
 }
 
 \references{
-Gasparrini A, Armstrong B, Kenward MG (2012). Multivariate meta-analysis for non-linear and other multi-parameter associations. \emph{Statistics in Medicine}. \bold{31}(29):3821--3839. [Freely available \href{http://www.ag-myresearch.com/2012_gasparrini_statmed.html}{\bold{here}}].
+Sera F, Gasparrini A (2019). An extended mixed-effects framework for meta-analysis.\emph{Statistics in Medicine}. In submission.
+
+Verbeke G, Molenberghs G. \emph{Linear Mixed Models for Longitudinal Data}. Springer; 1997.
 }
 
 \author{Antonio Gasparrini <\email{antonio.gasparrini@lshtm.ac.uk}> and Francesco Sera <\email{francesco.sera@lshtm.ac.uk}>}
@@ -68,10 +69,10 @@ blup(model)
 blup(model, se=TRUE)
 
 # SAME AS ABOVE, AGGREGATED BY OUTCOME, WITH PREDICTION INTERVALS
-blup(model, se=TRUE, pi=TRUE, aggregate="y")
+blup(model, se=TRUE, pi=TRUE, aggregate="outcome")
 
 # WITH VCOV, FORCED TO A LIST
-blup(model, se=TRUE, pi=TRUE, vcov=TRUE, aggregate="y")
+blup(model, se=TRUE, pi=TRUE, vcov=TRUE, aggregate="outcome")
 }
 
 \keyword{models}

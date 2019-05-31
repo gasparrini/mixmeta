@@ -6,6 +6,10 @@ function(object, ...) {
 #
 ################################################################################
 #
-  model.matrix(object$formula[c(1,3)],data=model.frame(object),
-    contrasts.arg=object$contrasts)
+  # DROP THE RANDOM TERMS AND CONTRASTS
+  tt <- getFixTerms(object$formula, object$terms)
+  contr <- getContrXlev(tt, object$contrasts)
+#
+  # RUN THE DEFAULT METHOD
+  model.matrix(tt, data=model.frame(object), contrasts.arg=contr)
 }

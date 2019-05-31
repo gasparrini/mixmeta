@@ -30,6 +30,8 @@ The data are stored in a \emph{wide} format, with each record belonging to a sin
 
 \source{
 Ishak KJ, et al (2007). Meta-analysis of effect sizes reported at multiple time points using general linear mixed model. \emph{Clinical Trials}. \bold{4}(5):525--39.
+
+Sera F, Gasparrini A (2019). An extended mixed-effects framework for meta-analysis.\emph{Statistics in Medicine}. In submission.
 }
 
 \note{

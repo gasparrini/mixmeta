@@ -8,8 +8,7 @@ function(x, set.negeigen=sqrt(.Machine$double.eps), force=TRUE, error=FALSE,
 ################################################################################
 #
   # TRANFORM IN A LIST
-  islist <- is.list(x)
-  if(!islist) x <- list(x)
+  x <- getList(x)
 #
   # CHECK POSITIVE-DEFINITENESS
   x <- lapply(x, function(mat) {
@@ -26,6 +25,6 @@ function(x, set.negeigen=sqrt(.Machine$double.eps), force=TRUE, error=FALSE,
     return(mat)
   })
 #
-  # TRANSFORM IN MATRIX IF ONLY ONE COMPONENT
-  if(!islist&&length(x)==1L) x[[1]] else x
+  # DROP THE LIST STRUCTURE IF ONLY ONE COMPONENT
+  dropList(x)
 }

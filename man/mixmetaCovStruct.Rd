@@ -32,6 +32,8 @@ The unrestricted parameters defining the random-effects (co)variance matrix (or 
 }
 
 \references{
+Sera F, Gasparrini A (2019). An extended mixed-effects framework for meta-analysis.\emph{Statistics in Medicine}. In submission.
+
 Pinheiro JC and Bates DM (2000). \emph{Mixed-Effects Models in S and S-PLUS}. New York, Springer Verlag.
 }
 

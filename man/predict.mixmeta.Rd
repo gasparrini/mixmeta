@@ -9,9 +9,8 @@ This method function computes predictions from fitted univariate or multivariate
 }
 
 \usage{
-\method{predict}{mixmeta}(object, newdata, se=FALSE, ci=FALSE, vcov=FALSE,
-  interval=c("confidence","prediction"), ci.level=0.95, format,
-  aggregate=c("stat","y"), na.action=na.pass, \dots)
+\method{predict}{mixmeta}(object, newdata, se=FALSE, ci=FALSE, vcov=FALSE, ci.level=0.95,
+  format, aggregate=c("stat","outcome"), na.action=na.pass, \dots)
 }
 
 \arguments{
@@ -20,7 +19,6 @@ This method function computes predictions from fitted univariate or multivariate
   \item{se }{ logical switch indicating if standard errors must be included.}
   \item{ci }{ logical switch indicating if confidence intervals must be included.}
   \item{vcov }{ logical switch indicating if the (co)variance matrix must be included.}
-  \item{interval }{ type of prediction. See Details.}
   \item{ci.level }{ a numerical value between 0 and 1, specifying the confidence level for the computation of confidence intervals.}
   \item{format }{ the format for the returned results. See Value.}
   \item{aggregate }{ when \code{format="matrix"} and \code{se} or \code{ci} are required, the results may be aggregated by statistic or by outcome. See Value}
@@ -32,8 +30,6 @@ This method function computes predictions from fitted univariate or multivariate
 \details{
 The method function \code{predict} produces predicted values from \code{mixmeta} objects, obtained by evaluating the original call to \code{\link{mixmeta}} in the frame \code{newdata}. For both fixed and random-effects models, estimated predictions are only based on the fixed part of the model, ignoring study-specific deviations, differently from \code{\link[=blup.mixmeta]{blup}}.
 
-For random-effects models, if \code{interval="confidence"} (the default), standard errors, confidence intervals and (co)variance matrix of the predicted values are computed only using the estimated (co)variance matrix of the fixed-effects coefficients. If \code{interval="prediction"}, the estimated between-study (co)variance matrix, stored in the \code{Psi} component of \code{mixmeta} objects, is also added. In this case, interpretation of the uncertainty reflects that of a new single unit sampled from the same population.
-
 If \code{newdata} is omitted, the predictions are based on the data used for the fit. In that case how to handle predictions for units removed from estimation due to invalid missing pattern is determined by the \code{na.action} argument used in \code{\link{mixmeta}} to produce \code{object}. If \code{na.action=na.omit}, units excluded from estimation will not appear, whereas if \code{na.action=na.exclude} they will appear, with values set to \code{NA} for all the outcomes. This step is performed by \code{\link{napredict}}. See Notes.
 }
 
@@ -42,7 +38,7 @@ The results may be aggregated in matrices (the default), or returned as lists, d
 }
 
 \references{
-Gasparrini A, Armstrong B, Kenward MG (2012). Multivariate meta-analysis for non-linear and other multi-parameter associations. \emph{Statistics in Medicine}. \bold{31}(29):3821--3839. [Freely available \href{http://www.ag-myresearch.com/2012_gasparrini_statmed.html}{\bold{here}}].
+Sera F, Gasparrini A (2019). An extended mixed-effects framework for meta-analysis.\emph{Statistics in Medicine}. In submission.
 }
 
 \author{Antonio Gasparrini <\email{antonio.gasparrini@lshtm.ac.uk}> and Francesco Sera <\email{francesco.sera@lshtm.ac.uk}>}
@@ -66,13 +62,10 @@ newdata <- data.frame(pubyear=1985:1987, row.names=1985:1987)
 predict(model, newdata, se=TRUE)
 
 # SAME AS ABOVE, AGGREGATED BY OUTCOME
-predict(model, newdata, se=TRUE, aggregate="y")
-
-# SAME AS ABOVE, WITH PREDICTION INTERVALS
-predict(model, newdata, se=TRUE, aggregate="y", interval="prediction")
+predict(model, newdata, se=TRUE, aggregate="outcome")
 
 # WITH VCOV, FORCED TO A LIST
-predict(model, newdata, se=TRUE, vcov=TRUE, aggregate="y")
+predict(model, newdata, se=TRUE, vcov=TRUE, aggregate="outcome")
 }
 
 \keyword{models}

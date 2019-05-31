@@ -31,6 +31,8 @@ The log-odds ratio is computed empirically as \eqn{\log(s_t \times (n_t-s_t) / (
 Musekiwa A, et al (2012). Meta-analysis of effect sizes reported at multiple time points using general linear mixed model. \emph{Plos One}. \bold{11}(10):e0164898.
 
 Trikalinos TA, Olkin I (2012). Meta-analysis of effect sizes reported at multiple time points: a multivariate approach. \emph{Clinical Trials}. \bold{9}(5):610--620.
+
+Sera F, Gasparrini A (2019). An extended mixed-effects framework for meta-analysis.\emph{Statistics in Medicine}. In submission.
 }
 
 \note{

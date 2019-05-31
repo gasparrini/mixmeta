@@ -9,15 +9,16 @@ function(Zlist, nalist, Psi, Slist)  {
 #
   # IF NO Psi, SIMPLY RETURN Slist
   if(is.null(Psi)) return(Slist)
+  Psi <- getList(Psi)
 #
   # IF NO Zlist, USE INFO IN nalist TO EXCLUDE MISSING
   if(is.null(Zlist)) return(mapply(function(S,na)
-    S+Psi[!na,!na,drop=FALSE],Slist,nalist,SIMPLIFY=FALSE))
+    S+Psi[[1L]][!na,!na,drop=FALSE],Slist,nalist,SIMPLIFY=FALSE))
 #
   # OTHERWISE, IN EACH LEVEL MULTIPLY BY Z, BLOCK-DIAG, ADD BY LEVEL AND S
-  if(!is.list(Psi)) Psi <- list(Psi)
-  lapply(seq(Zlist), function(i)
-    sumlist(lapply(seq(Psi),function(j)
+  Psi <- getList(Psi)
+  lapply(seq_along(Zlist), function(i)
+    sumList(lapply(seq_along(Psi),function(j)
       bdiagMat(lapply(Zlist[[i]][[j]],function(x)
         x%*%Psi[[j]]%*%t(x)))))+Slist[[i]])
 }

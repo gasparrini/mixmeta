@@ -46,7 +46,7 @@ The main function in the package is \code{\link{mixmeta}}, which performs the va
 
 The estimation is carried out internally through \code{\link{mixmeta.fit}}, a wrapper which accepts data in a specific format, then prepares the various data components and calls ad hoc estimation functions for fitting the models. Specifically, \code{\link{mixmeta.fixed}} is applied for fixed-effects models, while estimators for random-effects models are implemented in the functions \code{\link{mixmeta.ml}} and \code{\link{mixmeta.reml}} for (restricted) maximum likelihood, \code{\link{mixmeta.mm}} for the method of moments, and \code{\link{mixmeta.vc}} for variance components. For likelihood-based methods, alternative iterative optimizations methods are provided in two sets of functions implementing \code{\link[=ml.newton]{Newton-type}} and \code{\link[=ml.igls]{(R)IGLS}} algorithms used for maximizing the (restricted) likelihood. The former method applies specific \code{\link[=ml.loglik.fn]{likelihood functions}}. Various types of likelihood-based models are defined by separate regression formulae for fixed and random-effects (see \code{\link{mixmetaFormula}}). Specific \code{\link[=mixmetaCovStruct]{(co)variance structures}} for the between-group random effects at single or multiple levels are available. Fitting parameter options are set by \code{\link{mixmeta.control}}.
 
-Method functions are available for objects of class \code{"mixmeta"} (see \code{\link{mixmetaObject}} for a complete list). The method \code{\link[=summary.mixmeta]{summary}} produces a list of class \code{"summary.mixmeta"} for summarizing the fit of the model and providing additional results. The method function \code{\link[=predict.mixmeta]{predict}} computes predicted values, optionally for a set of new values of the predictors. \code{\link[=blup.mixmeta]{blup}} gives the (empirical) best linear unbiased predictions for the set of studies used for estimation. Other default or specific method functions for regression can be used on objects of class \code{"mixmeta"}, such as \code{\link{fitted}} and \code{\link{residuals}}, \code{\link[=logLik.mixmeta]{logLik}}, \code{\link{AIC}} and \code{\link{BIC}}, among others.
+Method functions are available for objects of class \code{"mixmeta"} (see \code{\link{mixmetaObject}} for a complete list). The method \code{\link[=summary.mixmeta]{summary}} produces a list of class \code{"summary.mixmeta"} for summarizing the fit of the model and providing additional results. The method function \code{\link[=predict.mixmeta]{predict}} computes predicted values, optionally for a set of new values of the predictors. \code{\link[=blup.mixmeta]{blup}} gives the (empirical) best linear unbiased predictions for the set of studies used for estimation. Other default or specific method functions for regression can be used on objects of class \code{"mixmeta"}, such as \code{\link{fitted}} and \code{\link{residuals}}, \code{\link[=logLik.mixmeta]{logLik}}, \code{\link{AIC}} and \code{\link{BIC}}, or \code{\link{drop1}} and \code{\link{add1}}, among others.
 
 Methods for \code{\link[=model.frame.mixmeta]{model.frame}} and \code{\link[=model.matrix.mixmeta]{model.matrix}} are used to extract and construct the model frame and the design matrix of the regression meta-analytical model, respectively. These specific methods for objects of class \code{"mixmeta"} are needed to appropriately deal with missing values and to account for model frames that include terms for both the fixed and random parts. In particular, methods for \code{\link[=na.omit.data.frame.mixmeta]{na.omit}} and \code{\link[=na.exclude.data.frame.mixmeta]{na.exclude}} are used to handle correctly missing values.
 
@@ -102,6 +102,8 @@ Maintainer: Antonio Gasparrini <\email{antonio.gasparrini@lshtm.ac.uk}>
 }
 
 \references{
+Sera F, Gasparrini A (2019). An extended mixed-effects framework for meta-analysis.\emph{Statistics in Medicine}. In submission.
+
 Gasparrini A, Armstrong B, Kenward MG (2012). Multivariate meta-analysis for non-linear and other multi-parameter associations. \emph{Statistics in Medicine}. \bold{31}(29):3821--3839. [Freely available \href{http://www.ag-myresearch.com/2012_gasparrini_statmed.html}{\bold{here}}].
 
 Pinheiro JC and Bates DM (2000). \emph{Mixed-Effects Models in S and S-PLUS}. New York, Springer Verlag.
@@ -112,17 +114,17 @@ Goldstein H (1986). Multilevel mixed linear model analysis using iterative gener
 
 Goldstein H (1992). Efficient computational procedures for the estimation of parameters in multilevel models based on iterative generalized least squares. \emph{Computational Statistics \& Data Analysis}. \bold{13}(1):63--71.
 
+Stram DO (1996). Meta-analysis of published data using a linear mixed-effects model. \emph{Biometrics}. \bold{52}(2):536--544.
+
+Stevens JR, Taylor AM. Hierarchical dependence in meta-analysis. \emph{Journal of Educational and Behavioral Statistics}. \bold{34}(1):46--73.
+
 Jackson D, Riley R, White IR (2011). Multivariate meta-analysis: Potential and promise. \emph{Statistics in Medicine}. \bold{30}(20);2481--2498.
 
-White IR (2009). Multivariate random-effects meta-analysis. \emph{Stata Journal}. \bold{9}(1):40--56.
+Goldstein H, et al (2000). Meta-analysis using multilevel models with an application to the study of class size effects. \emph{Journal of the Royal Statistical Society: Series C (Applied Statistics)}. \bold{49}(3):399--412.
 
-White IR (2011). Multivariate random-effects meta-regression: updates to mixmeta. \emph{Stata Journal}. \bold{11}(2):255-270.
+Crippa A, et al (2019). One-stage dose-response meta-analysis for aggregated data. \emph{Statistical Methods in Medical Research}.  \bold{28}(5):1579--1596.
 
-Berkey CS, et al. (1998). Meta-analysis of multiple outcomes by regression with random effects. \emph{Statistics in Medicine}. \bold{17}(22):2537--2550.
-
-Jackson D, White IR, Riley RD (2013). A matrix based method of moments for fitting the multivariate random effects model for meta-analysis and meta-regression. \emph{Biometrical Journal}. \bold{55}(2):231--45.
-
-Crippa A, et al. (2018). One-stage dose-response meta-analysis for aggregated data. \emph{Statistical Methods in Medical Research}.  DOI: 10.1177/0962280218773122.
+Ishak KJ, Platt RW, Joseph L, et al (2007). Meta-analysis of longitudinal studies. \emph{Clinical Trials}. \bold{4}(5):525--539.
 }
 
 \keyword{package}

@@ -21,7 +21,7 @@ These method functions return the model frame and design matrix for meta-analyti
 }
 
 \details{
-The model frame is produced by \code{\link{mixmeta}} when fitting the meta-analytical model, and stored in the \code{mixmeta} object if argument \code{model=TRUE}. Alternatively, the model frame is directly returned by \code{\link{mixmeta}} with argument \code{method="model.frame"}. The method function \code{model.frame} simply extracts the saved model frame if available, or otherwise evaluates a call to \code{\link{mixmeta}} when \code{method="model.frame"}.
+The model frame is produced by \code{\link{mixmeta}} when fitting the meta-analytical model, and stored in the \code{mixmeta} object if argument \code{model=TRUE}. Alternatively, the model frame is directly returned from a call to \code{\link{mixmeta}} with argument \code{method="model.frame"}. The method function \code{model.frame} simply extracts the saved model frame if available, or otherwise evaluates a call to \code{\link{mixmeta}} when \code{method="model.frame"}.
 
 The method function \code{model.matrix} extracts the design matrix for the fixed-effects part of a fitted meta-analytical model. It first extract the model frame by calling \code{model.frame}, and then passes the call to the default method.
 

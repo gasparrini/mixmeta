@@ -11,7 +11,7 @@ function(random, data)  {
   if(is.null(random)) return(matrix(seq(nrow(data))))
 #
   # EXTRACT A LIST WITH GROUPING VARIABLES
-  if(!is.list(random)) random <- list(random)
+  random <- getList(random)
   groups <- lapply(random, function(form) {
     form[[2]] <- form[[2]][[3]]
     model.frame(form,data)[[1]]

@@ -18,7 +18,7 @@ function(Zlist, nalist, rep, k, q) {
     Zexp <- do.call(cbind,lapply(seq(length(q)),function(j)
       bdiagMat(Zlist[[i]][[j]])))
     # SECOND LOOP: LEVEL OF RANDOM EFFECTS (THEN LISTS PUT TOGETHER)
-    do.call(c,lapply(seq(length(q)),function(j) {
+    do.call(c,lapply(seq_along(q),function(j) {
       # DEFINE THE ROWS/COLS OF THE MATRIX, IDENTIFYING TERMS
       # DEFINE ALSO THE STARTING POINT IN Zexp CORRESPONDING TO THIS LEVEL
       rows <- vechMat(row(diag(q[j]*k)))
@@ -27,7 +27,7 @@ function(Zlist, nalist, rep, k, q) {
       # THIRD LOOP: SEQUENCE OF TERMS
       lapply(seq(rows),function(t) {
         # FOURTH LOOP: SEQUENCE OF REPETITIONS IN THAT LEVEL (THEN SUM AND VEC)
-        sumlist(lapply(seq(rep[i,j]),function(r) {
+        sumList(lapply(seq(rep[i,j]),function(r) {
           # DEFINE INDICES IN Z
           ind1 <- start+(r-1)*(q[j]*k)+rows[t]
           ind2 <- start+(r-1)*(q[j]*k)+cols[t]

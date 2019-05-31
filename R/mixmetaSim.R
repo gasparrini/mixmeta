@@ -11,27 +11,34 @@ function(y, S, Psi, random, data, nsim=1, seed=NULL, ...) {
   addarg <- list(...)
 #
   # PREPARE AND CHECK y
+  if (missing(data)) data <- NULL
+  y <- eval(substitute(y),data,parent.frame())
   if(!is.matrix(y)) y <- as.matrix(y)
   nm <- rownames(y)
   k <- ncol(y) ; n <- nrow(y)
   if(any(nay <- is.na(y))) stop("missing values not allowed in 'y'")
 #
-  # RESET random AND SET groups
+  # RESET random AND EXTRACT RANDOM TERMS
   random <- getRandom(random)
-  if(missing(data)) data <- data.frame(row.names=seq(n))
-  groups <- getGroups(random,data)
+  ranform <- getFullFormula(as.formula("~1",parent.frame()),random)
+  randata <- if(is.null(random)) data.frame(seq(n)) else 
+    model.frame(ranform, data, na.action=na.pass)
+  if(any(is.na(randata))) stop("missing values not allowed in random terms")
+  if(nrow(randata)!=n) stop("'y' and random terms of different length")
 #
-  # RE-ORDER
+  # DEFINE GROUPS AND RE-ORDER
+  groups <- getGroups(random,randata)
   ord <- do.call(order,lapply(seq(ncol(groups)),function(i) groups[,i]))
   groups <- groups[ord,,drop=FALSE]
   y <- y[ord,,drop=FALSE]
+  randata <- randata[ord,]
 #
   # LIST OF DESIGN MATRICES FOR RANDOM PART (ONLY IF NEEDED)
-  Z <- getZ(random,data,contrasts=addarg$contrasts)
+  Z <- getZ(random,randata)
 #
   # Psi
   if(!is.null(Psi)) Psi <- checkPD(Psi,force=FALSE,error=TRUE,label="Psi")
-  Psilist <- if(is.list(Psi)) Psi else list(Psi)
+  Psi <- getList(Psi)
 #
   # OTHER DIMENSIONS
   gp <- groups[,1]
@@ -41,15 +48,13 @@ function(y, S, Psi, random, data, nsim=1, seed=NULL, ...) {
 #
   # PRODUCE S AS A MATRIX OF VECTORIZED ENTRIES (IF NEEDED INPUT COVARIANCES)
   # CREATE ARTIFACTS FOR y AND control
-  S <- eval(S,data,parent.frame())
+  S <- eval(substitute(S),data,parent.frame())
   S <- getS(S,y,NULL,NULL,ord,Scor=addarg$Scor,checkPD=addarg$checkPD)
 #
   # CHECKS
   if(n<2L) stop("at least two units must be generated")
-  if(!is.null(Z) && any((if(length(q)==1L) nrow(Z) else sapply(Z,nrow))!=n))
-    stop("random part not consistent with 'y'")
-  if(length(Psilist)!=length(q) || any(sapply(seq(Psilist), function(i)
-    any(dim(Psilist[[i]])!=k*q[[i]])))) stop("'random' and 'Psi' not consistent")
+  if(length(Psi)!=length(q) || any(sapply(seq_along(Psi), function(i)
+    any(dim(Psi[[i]])!=k*q[[i]])))) stop("'random' and 'Psi' not consistent")
 #
 ################################################################################
 #  CREATE LISTS
@@ -86,8 +91,7 @@ function(y, S, Psi, random, data, nsim=1, seed=NULL, ...) {
   sim <- lapply(seq(nsim),function(i) matrix(unlist(mapply(function(pred,eig)
     pred+eig$vec%*%diag(sqrt(eig$val),length(pred))%*%rnorm(length(pred)),
     predlist,eigenlist)),n,k,byrow=TRUE,dimnames=list(nm,NULL))[order(ord),])
-  if(nsim==1L) sim <- sim[[1]]
 #
   # RETURN
-  sim
+  dropList(sim)
 }

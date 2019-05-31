@@ -6,15 +6,11 @@ function(formula, ...) {
 #
 ################################################################################
 #
-  dots <- list(...)
-  nargs <- dots[match(c("data","na.action","subset"),names(dots),0L)]
-  if (length(nargs) || is.null(formula$model)) {
+  if(is.null(formula$model)) {
     fcall <- formula$call
     fcall$method <- "model.frame"
-    fcall[[1L]] <- as.name("mixmeta")
-    fcall[names(nargs)] <- nargs
     env <- environment(formula$terms)
-    if (is.null(env)) env <- parent.frame()
+    if(is.null(env)) env <- parent.frame()
     eval(fcall, env)
   }
   else formula$model

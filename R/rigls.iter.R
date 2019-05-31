@@ -37,12 +37,12 @@ function(Psi, Qlist, Xlist, Zlist, ylist, Slist, nalist, rep, k, q, bscov,
 #
   # COMPUTE PARAMETERS AND FORM Psi (NB: par NOT TRANSFORMED)
   par <- as.numeric(chol2inv(chol(XtVX)) %*% XtVy)
-  Psi <- lapply(lapply(seq(length(q)),function(j)
+  Psi <- lapply(lapply(seq_along(q),function(j)
     par[seq(c(0,cumsum(q*k*(q*k+1)/2))[j]+1,cumsum(q*k*(q*k+1)/2)[j])]),xpndMat)
 #
   # FORCE POSITIVE-DEFINITENESS
   Psi <- checkPD(Psi,set.negeigen=control$set.negeigen,force=TRUE,error=FALSE)
 #
-  # TRANSFORM IN MATRIX IF ONLY ONE COMPONENT
-  if(is.list(Psi)&&length(Psi)==1L) Psi[[1]] else Psi
+  # DROP THE LIST STRUCTURE IF ONLY ONE COMPONENT
+  dropList(Psi)
 }

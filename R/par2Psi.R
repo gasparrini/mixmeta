@@ -8,11 +8,10 @@ function(par, bscov, k, q, fix) {
 # FUNCTION TO GENERATE THE MATRICES OF THE RANDOM PART FROM THE PARAMETERS
 #
   # IF A SINGLE VECTOR STORING PARAMETERS FOR MULTIPLE LEVELS
-  par <- getPar(par,bscov,k,q)
-  if(!is.list(par)) par <- list(par)
+  par <- getList(getPar(par,bscov,k,q))
 #
   # DEFINE THE MATRICES
-  Psi <- lapply(seq(bscov), function(i) {
+  Psi <- lapply(seq_along(bscov), function(i) {
     d <- k*q[i]
     switch(bscov[i],
       # IF UNSTRUCTURED, CROSSPRODUCT FROM CHOLESKY
@@ -73,6 +72,6 @@ function(par, bscov, k, q, fix) {
   # NAMES
   names(Psi) <- names(bscov)
 #
-  # TRANSFORM IN MATRIX IF ONLY ONE COMPONENT
-  if(is.list(Psi)&&length(Psi)==1L) Psi[[1]] else Psi
+  # DROP THE LIST STRUCTURE IF ONLY ONE COMPONENT
+  dropList(Psi)
 }

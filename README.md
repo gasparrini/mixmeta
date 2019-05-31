@@ -6,7 +6,7 @@ The package consists of a collection of functions to perform various meta-analyt
 
 ### Info on the `mixmeta` package
 
-The package is available on the Comprehensive R Archive Network (CRAN), with info at the related web page (https://cran.r-project.org/package=mixmeta). A development website is available on GitHub (https://github.com/gasparrini/mixmeta).
+The package `mixmeta` is available on the Comprehensive R Archive Network (CRAN), with info at the related web page (https://cran.r-project.org/package=mixmeta). A development website is available on GitHub (https://github.com/gasparrini/mixmeta).
 
 For a short summary of the functionalities of this package, refer to the main help page by typing:
 
@@ -26,7 +26,7 @@ install.packages("mixmeta")
 
 ### R code in published articles
 
-Several peer-reviewed articles and documents provide R code illustrating methodological developments or replicating substantive results. An updated version of the code can be found at the GitHub (https://github.com/gasparrini) or personal web page (http://www.ag-myresearch.com) of the package maintainer.
+Several peer-reviewed articles and documents provide R code illustrating methodological developments of `mixmeta` or replicating substantive results using this package. An updated version of the code can be found at the GitHub (https://github.com/gasparrini) or personal web page (http://www.ag-myresearch.com) of the package maintainer.
 
 ### References:
 

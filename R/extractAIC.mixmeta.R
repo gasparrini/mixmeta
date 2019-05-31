@@ -2,10 +2,10 @@
 ### R routines for the R package mixmeta (c)
 #
 extractAIC.mixmeta <-
-function (object, scale, k = 2, ...) {
+function (fit, scale, k = 2, ...) {
 #
 ################################################################################
 # EXTRACTS THE NUMBER OF OBSERVATIONS USED FOR FITTING. USED BY BIC
 #
-   c(object$df$df,AIC(object))
+  c(fit$df$df,AIC(fit))
 }

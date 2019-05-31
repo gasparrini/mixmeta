@@ -20,28 +20,28 @@ function(Psi, Qlist, Xlist, Zlist, ylist, Slist, nalist, rep, k, q, bscov,
     ylist,Slist,Xlist,SIMPLIFY=FALSE)
 #
   # DEFINE THE COMPONENTS (GOLDSTEIN COMP STAT & DATA ANAL 1992, PAGE 66)
-  Alist <- lapply(seq(Qlist), function(i)
-    lapply(seq(Qlist[[1L]]), function(k) Qlist[[i]][[k]]%*%invSigmalist[[i]]))
-  Blist <- lapply(seq(flist), function(i) flist[[i]]%*%invSigmalist[[i]])
+  Alist <- lapply(seq_along(Qlist), function(i)
+    lapply(seq_along(Qlist[[1L]]), function(k) Qlist[[i]][[k]]%*%invSigmalist[[i]]))
+  Blist <- lapply(seq_along(flist), function(i) flist[[i]]%*%invSigmalist[[i]])
 #
   # COMPUTE THE ELEMENTS
-  ind1 <- unlist(lapply(seq(Qlist[[1L]]),":",length(Qlist[[1L]])))
+  ind1 <- unlist(lapply(seq_along(Qlist[[1L]]),":",length(Qlist[[1L]])))
   ind2 <- rep(seq(Qlist[[1L]]),rev(seq(Qlist[[1L]])))
   XtVX <- xpndMat(sapply(seq(ind1), function(k)
-    sum(sapply(seq(Qlist), function(i)
+    sum(sapply(seq_along(Qlist), function(i)
       sum(diag(Alist[[i]][[ind1[k]]]%*%Alist[[i]][[ind2[k]]]))))))
-  XtVy <- sapply(seq(Qlist[[1L]]), function(k)
-    sum(sapply(seq(Qlist), function(i)
+  XtVy <- sapply(seq_along(Qlist[[1L]]), function(k)
+    sum(sapply(seq_along(Qlist), function(i)
       sum(diag(Alist[[i]][[k]]%*%Blist[[i]])))))
 #
   # COMPUTE PARAMETERS AND FORM Psi (NB: par NOT TRANSFORMED)
   par <- as.numeric(chol2inv(chol(XtVX)) %*% XtVy)
-  Psi <- lapply(lapply(seq(length(q)),function(j)
+  Psi <- lapply(lapply(seq_along(q),function(j)
     par[seq(c(0,cumsum(q*k*(q*k+1)/2))[j]+1,cumsum(q*k*(q*k+1)/2)[j])]),xpndMat)
 #
   # FORCE POSITIVE-DEFINITENESS
   Psi <- checkPD(Psi,set.negeigen=control$set.negeigen,force=TRUE,error=FALSE)
 #
-  # TRANSFORM IN MATRIX IF ONLY ONE COMPONENT
-  if(is.list(Psi)&&length(Psi)==1L) Psi[[1]] else Psi
+  # DROP THE LIST STRUCTURE IF ONLY ONE COMPONENT
+  dropList(Psi)
 }

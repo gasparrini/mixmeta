@@ -28,15 +28,17 @@ The data are stored in a \emph{long} format, with each record reporting the info
 }
 
 \source{
-Crippa A, et al (2018). One-stage dose-response meta-analysis for aggregated data. \emph{Statistical Methods in Medical Research}. DOI: 10.1177/0962280218773122.
+Crippa A, et al (2019). One-stage dose-response meta-analysis for aggregated data. \emph{Statistical Methods in Medical Research}.  \bold{28}(5):1579--1596.
 
 Crippa A, Orsini N (2016). Multivariate dose-response meta-analysis: The dosresmeta R package. \emph{Journal of Statistical Software}. \bold{72}(1):1--15.
 
 Orsini N, et al (2012). Meta-analysis for linear and nonlinear dose-response relations: examples, an evaluation of approximations, and software. \emph{American Journal of Epidemiology}. \bold{175}(1):66--73.
+
+Sera F, Gasparrini A (2019). An extended mixed-effects framework for meta-analysis.\emph{Statistics in Medicine}. In submission.
 }
 
 \note{
-The data provide an example of application of dose-response meta-analysis, with repeated measurements of the effect size associated to different doses within each study. This requires a modelling structure that accounts for both within and between-study correlations of repeated measurements. The within-study correlations are usually reconstructed from published data using specific methods. Results can be compared with those reported by Crippa and Orsini (2016) and Orsini and colleagues (2012), although they are not identical: while the original analysis used a two-stage approach, the modelling framework applied here follows the more recent one-stage dose-response meta-analysis proposed by Crippa and collegues (2018).
+The data provide an example of application of dose-response meta-analysis, with repeated measurements of the effect size associated to different doses within each study. This requires a modelling structure that accounts for both within and between-study correlations of repeated measurements. The within-study correlations are usually reconstructed from published data using specific methods. Results can be compared with those reported by Crippa and Orsini (2016) and Orsini and colleagues (2012), although they are not identical: while the original analysis used a two-stage approach, the modelling framework applied here follows the more recent one-stage dose-response meta-analysis proposed by Crippa and collegues (2019).
 
 The dataset is also available in the same format in the dataframe \code{alcohol_crc} of the package \pkg{dosresmeta}.
 }

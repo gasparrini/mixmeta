@@ -8,7 +8,7 @@ function(par,U,invtXWXtot,ind1,ind2,Xlist,invSigmalist,reslist,nalist,k) {
 # FUNCTION TO COMPUTE THE MATRIX DERIVATIVES IN TERMS OF PARAMETERS OF
 # THE CHOLESKY DECOMPOSITION (ONLY FOR SINGLE-LEVEL AND UNSTRUCTURED RANDOM)
 #
-  grad <- sapply(seq(length(par)),function(i) {
+  grad <- sapply(seq_along(par),function(i) {
     # COMPUTE THE DERIVATIVE OF Psi IN TERMS OF ITS CHOLESKY DECOMPOSITION U
     A <- B <- C <- diag(0,k)
     A[ind2[i],] <- B[,ind2[i]] <- U[ind1[i],]

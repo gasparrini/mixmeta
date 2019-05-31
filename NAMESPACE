@@ -40,7 +40,7 @@ export(
 # NOT EXPORTED METHODS
 #################
 #
-# extractAIC.mixmeta, nobs.mixmeta
+# extractAIC.mixmeta, nobs.mixmeta, drop1.mixmeta, add1.mixmeta
 #
 #################
 # NOT USED
@@ -54,13 +54,15 @@ export(
 #
 # .onAttach
 # checkPD
+# dropList
 # fbtr
-# getBSCov, getFullformula, getGroups, getInitPsi, GetNpar, getPar, getPsifix,
-# getQlist, getRandom, getS, getSigmalist, getSlist, getZ, getZlist, getZPZlist
+# getBSCov, getContrXlev, getFixTerms, getFullFormula, getGroups, getInitPsi,
+# getList, getNpar, getPar, getPsifix, getQlist, getRandom, getS, getSigmalist,
+# getSlist, getZ, getZlist, getZPZlist
 # glsfit
 # gradchol.ml, gradchol.reml
 # par2Psi, Psi2par
-# sumlist
+# rbindlist, sumList
 #
 #################
 # IMPORTED
@@ -79,13 +81,16 @@ S3method(coef, mixmeta)
 S3method(logLik, mixmeta)
 S3method(model.frame, mixmeta)
 S3method(model.matrix, mixmeta)
-S3method(nobs, mixmeta)
 S3method(predict, mixmeta)
 S3method(simulate, mixmeta)
 S3method(print, mixmeta)
 S3method(qtest, mixmeta)
 S3method(summary, mixmeta)
 S3method(vcov, mixmeta)
+S3method(extractAIC, mixmeta)
+S3method(nobs, mixmeta)
+S3method(drop1, mixmeta)
+S3method(add1, mixmeta)
 #
 S3method(print, summary.mixmeta)
 S3method(print, qtest.mixmeta)

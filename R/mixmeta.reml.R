@@ -10,7 +10,7 @@ function(Xlist, Zlist, ylist, Slist, nalist, rep, k, q, nall, bscov, control, ..
   fix <- getPsifix(control$Psifix,bscov,k,q,control$checkPD)
   Psi <- getInitPsi(control$initPsi,bscov,k,q,fix,control$checkPD)
   const <- -0.5*(nall-ncol(Xlist[[1L]]))*log(2*pi) +
-    sum(log(diag(chol(sumlist(lapply(Xlist,crossprod))))))
+    sum(log(diag(chol(sumList(lapply(Xlist,crossprod))))))
 #
   # OPTIMIZE: IGLS AND/OR NEWTON
   lliter <- control$loglik.iter

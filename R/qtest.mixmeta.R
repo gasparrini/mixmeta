@@ -57,7 +57,7 @@ function(object, ...) {
     df <- c(df,colSums(!nay,na.rm=TRUE)-p)
   }
 #
-  pvalue <- sapply(seq(length(Q)),function(i) 1-pchisq(Q[i],df[i]))
+  pvalue <- sapply(seq_along(Q),function(i) 1-pchisq(Q[i],df[i]))
   names(Q) <- names(df) <- names(pvalue) <-
     if(k>1L) c(".all",object$lab$k) else object$lab$k
 #

@@ -14,7 +14,7 @@ function(fix, bscov, k, q, checkPD=NULL)  {
   # CHECK WITH INFO PROVIDED
   mess <- "'Psifix' does not match random components"
   if(is.null(fix)) stop(mess)
-  if(!is.list(fix)) fix <- list(fix)
+  fix <- getList(fix)
   if(length(fix)>length(ind)) stop(mess)
   if(length(ind)>1L) {
     nm <- match(names(bscov)[ind],names(fix))
@@ -28,9 +28,9 @@ function(fix, bscov, k, q, checkPD=NULL)  {
   if(is.null(checkPD) || checkPD)
     fix <- checkPD(fix,force=FALSE,error=TRUE,label="Psifix")
   # CHECK DIMENSIONS
-  if(any(sapply(seq(fix),function(i) any(dim(fix[[i]])!=k*q[i]))))
+  if(any(sapply(seq_along(fix),function(i) any(dim(fix[[i]])!=k*q[i]))))
     stop("wrong dimennsions in Psifix")
 #
-  # TRANSFORM IN MATRIX IF ONLY ONE COMPONENT
-  if(is.list(fix)&&length(fix)==1L) fix[[1]] else fix
+  # DROP THE LIST STRUCTURE IF ONLY ONE COMPONENT
+  dropList(fix)
 }

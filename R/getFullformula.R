@@ -1,7 +1,7 @@
 ###
 ### R routines for the R package mixmeta (c)
 #
-getFullformula <-
+getFullFormula <-
 function(formula, random)  {
 #
 ################################################################################
@@ -11,7 +11,7 @@ function(formula, random)  {
   if(is.null(random)) return(formula)
 #
   # EXTRACT THE TERMS IN FORMULAE FOR FIXED AND RANDOM TERMS
-  if(!is.list(random)) random <- list(random)
+  random <- getList(random)
   fixterms <- attr(terms(formula),"term.labels")
   modrandom <- lapply(random, function(x)
     formula(paste("~",gsub("|","+",deparse(x[[2]]),fixed=TRUE))))

@@ -1,0 +1,93 @@
+#################
+# EXPORTED
+#################
+#
+export(
+  mixmeta, mixmeta.fit,
+  mixmeta.fixed, mixmeta.ml, mixmeta.reml, mixmeta.mm, mixmeta.vc,
+  mixmetaSim,
+  mixmeta.control,
+  inputna,
+  inputcov,
+  summary.mixmeta,
+  print.mixmeta, print.summary.mixmeta,
+  predict.mixmeta,
+  blup, blup.mixmeta,
+  simulate.mixmeta,
+  qtest, qtest.mixmeta, print.qtest.mixmeta,
+  logLik.mixmeta,
+  coef.mixmeta, vcov.mixmeta,
+  model.frame.mixmeta, model.matrix.mixmeta,
+  na.omit.data.frame.mixmeta, na.exclude.data.frame.mixmeta,
+  bdiagMat, vechMat, xpndMat
+)
+#
+#################
+# NOT EXPORTED BUT DOCUMENTED
+#################
+#
+# ml.newton, reml.newton
+# ml.igls, reml.rigls, igls.iter, rigls.iter
+# ml.loglik.fn, ml.loglik.gr, reml.loglik.fn, reml.loglik.gr
+#
+#################
+# DOCUMENTED PAGES
+#################
+#
+# mixmetaObjects, mixmetaFormula, mixmetaCovStruct
+#
+#################
+# NOT EXPORTED METHODS
+#################
+#
+# extractAIC.mixmeta, nobs.mixmeta
+#
+#################
+# NOT USED
+#################
+#
+# mlfull.fn, remlfull.fn
+#
+#################
+# INTERNAL
+#################
+#
+# .onAttach
+# checkPD
+# fbtr
+# getBSCov, getFullformula, getGroups, getInitPsi, GetNpar, getPar, getPsifix,
+# getQlist, getRandom, getS, getSigmalist, getSlist, getZ, getZlist, getZPZlist
+# glsfit
+# gradchol.ml, gradchol.reml
+# par2Psi, Psi2par
+# sumlist
+#
+#################
+# IMPORTED
+#################
+#
+import(stats, graphics, grDevices)
+importFrom(utils, packageDescription)
+importFrom(utils, modifyList)
+#
+#################
+# METHODS
+#################
+#
+S3method(blup, mixmeta)
+S3method(coef, mixmeta)
+S3method(logLik, mixmeta)
+S3method(model.frame, mixmeta)
+S3method(model.matrix, mixmeta)
+S3method(nobs, mixmeta)
+S3method(predict, mixmeta)
+S3method(simulate, mixmeta)
+S3method(print, mixmeta)
+S3method(qtest, mixmeta)
+S3method(summary, mixmeta)
+S3method(vcov, mixmeta)
+#
+S3method(print, summary.mixmeta)
+S3method(print, qtest.mixmeta)
+S3method(na.omit, data.frame.mixmeta)
+S3method(na.exclude, data.frame.mixmeta)

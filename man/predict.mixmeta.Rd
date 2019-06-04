@@ -10,7 +10,7 @@ This method function computes predictions from fitted univariate or multivariate
 
 \usage{
 \method{predict}{mixmeta}(object, newdata, se=FALSE, ci=FALSE, vcov=FALSE, ci.level=0.95,
-  format, aggregate=c("stat","outcome"), na.action=na.pass, \dots)
+  format, aggregate="stat", na.action=na.pass, \dots)
 }
 
 \arguments{

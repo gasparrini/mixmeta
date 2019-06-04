@@ -10,7 +10,7 @@ function(bscov, random, method)  {
   # CHECK
   bscov <- match.arg(bscov,c("unstr","diag","id","cs","hcs","ar1","har1","prop",
     "cor","fixed"), several.ok=TRUE)
-  if(bscov!="unstr" && !method%in%c("ml","reml","model.frame"))
+  if(any(bscov!="unstr") && !method%in%c("ml","reml","model.frame"))
     stop("structured 'bscov' only available for methods 'ml' or 'reml'")
 #
   # VALUES:

@@ -2,7 +2,7 @@
 ### R routines for the R package mixmeta (c)
 #
 getRandom <-
-function(random, method=NULL)  {
+function(random, method=NULL, env=NULL)  {
 #
 ################################################################################
 # FUNCTION TO RESET THE FORMULA(E) DEFINING THE RANDOM PART OF THE MODEL
@@ -28,7 +28,8 @@ function(random, method=NULL)  {
     if(any(groups==""))
       stop("Undefined grouping factors in 'random'. See help(mixmetaFormula)")
     # REPEAT THE FORMULA FOR EACH GROUPING FACTOR, SETTING ENVIRONMENT
-    form <- lapply(groups,function(x) formula(paste(split[1],x,sep="|")))
+    form <- lapply(groups, function(x)
+      as.formula(paste(split[1],x,sep="|"), env=env))
     # RENAME (REMOVING SPACES)
     names(form) <- gsub(" ","",groups,fixed=T)
     return(form)

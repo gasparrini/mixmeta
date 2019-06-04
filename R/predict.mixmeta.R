@@ -3,7 +3,7 @@
 #
 predict.mixmeta <-
 function(object, newdata, se=FALSE, ci=FALSE, vcov=FALSE, ci.level=0.95, format,
-  aggregate=c("stat","outcome"), na.action=na.pass, ...) {
+  aggregate="stat", na.action=na.pass, ...) {
 #
 ################################################################################
 # CHECK ARGUMENTS AND SET DEFAULTS
@@ -46,18 +46,16 @@ function(object, newdata, se=FALSE, ci=FALSE, vcov=FALSE, ci.level=0.95, format,
 #
 ################################################################################
 #
-  # COMPUTE PREDICTION, ACCOUNTING FOR OFFSET
-  fitlist <- lapply(seq(n),function(i) {
-    fit <- Xlist[[i]]%*%object$coefficients
-    if(!is.null(offset)) fit <- fit+offset[i]
-    return(drop(fit))})
+  # COMPUTE PREDICTION, IGNORING OFFSET
+  fitlist <- lapply(seq(n),function(i) drop(Xlist[[i]]%*%object$coefficients))
 #
   # COMPUTE (CO)VARIANCE AND STANDARD ERRORS
   Vlist <- lapply(Xlist,function(X) X%*%tcrossprod(object$vcov,X))
   stderrlist <- lapply(Vlist,function(x) sqrt(diag(x)))
 #
-  # COMPACT
+  # COMPACT INTO A MATRIX, AND DEAL WITH OFFSET
   fit <- rbindList(fitlist, k)
+  if(!is.null(offset)) fit <- fit+offset
   V <- rbindList(lapply(Vlist, vechMat), k*(k+1)/2)
   stderr <- rbindList(stderrlist, k)
   colnames(fit) <- colnames(stderr) <- object$lab$k

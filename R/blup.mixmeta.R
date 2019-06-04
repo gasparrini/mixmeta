@@ -2,13 +2,14 @@
 ### R routines for the R package mixmeta (c)
 #
 blup.mixmeta <-
-function(object, se=FALSE, pi=FALSE, vcov=FALSE, pi.level=0.95, level, format,
-  aggregate=c("stat","outcome"), ...) {
+function(object, se=FALSE, pi=FALSE, vcov=FALSE, pi.level=0.95, type="outcome",
+  level, format, aggregate="stat", ...) {
 #
 ################################################################################
 # CHECK ARGUMENTS AND SET DEFAULTS
 #
   if(missing(format)) format <- ifelse(vcov&&object$dim$k>1,"list","matrix")
+  type <- match.arg(type,c("outcome","deviation"))
   format <- match.arg(format,c("matrix","list"))
   aggregate <- match.arg(aggregate,c("stat","outcome"))
   if(missing(level)) level <- length(object$dim$q)
@@ -32,15 +33,16 @@ function(object, se=FALSE, pi=FALSE, vcov=FALSE, pi.level=0.95, level, format,
   groups <- groups[ord,seq(max(1,level)),drop=FALSE]
   mf <- mf[ord,,drop=FALSE]
 #
-  # EXTRACT MATRICES
+  # EXTRACT MATRICES (EXCLUDE OFFSET IF ANY)
   y <- as.matrix(model.response(mf,"numeric"))
+  offset <- model.offset(mf)
+  if(!is.null(offset)) y <- y - offset
   X <- model.matrix(object)[ord,,drop=FALSE]
   Z <- if(level>0L) getZ(object$random,mf,object$contrasts) else NULL
   if(!is.null(Z)&&is.list(Z)) Z <- if(level==1L) Z[[1L]] else Z[seq(level)]
 #
   # S AND OFFSET
   S <- if(!is.null(object$S)) as.matrix(object$S)[ord,,drop=FALSE] else NULL
-  offset <- object$offset[ord]
 #
 ################################################################################
 # RE-CREATE LISTS
@@ -70,11 +72,8 @@ function(object, se=FALSE, pi=FALSE, vcov=FALSE, pi.level=0.95, level, format,
   Slist <- getSlist(S,nay,groups,m,k,object$control$addSlist,
     object$control$checkPD)
 #
-  # PREDICTED VALUES (INCLUDING OFFSET) AND RESIDUALS
-  predlist <- lapply(seq(m),function(i) {
-    pred <- Xlist[[i]]%*%object$coefficients
-    if(!is.null(offset)) pred <- pred+offset[i]
-    return(pred)})
+  # PREDICTED VALUES (IGNORING OFFSET) AND RESIDUALS
+  predlist <- lapply(seq(m),function(i) Xlist[[i]]%*%object$coefficients)
   reslist <- mapply(function(y,pred) y-pred,ylist,predlist,SIMPLIFY=FALSE)
 #
   # COMPUTE RANDOM PARTS
@@ -90,16 +89,17 @@ function(object, se=FALSE, pi=FALSE, vcov=FALSE, pi.level=0.95, level, format,
 #
   # COMPUTE THE COMPONENTS (POINT ESTIMATES, (CO)VARIANCE AND STANDARD ERRORS)
   complist <- lapply(seq(m),function(i) {
-    # FIXED PART
-    blup <- predlist[[i]]
-    V <- Xlist[[i]]%*%tcrossprod(object$vcov,Xlist[[i]])
+    # FIXED PART (SET TO 0 IF DEVIATIONS)
+    blup <- if(type=="deviation") array(0,dim(predlist[[i]])) else predlist[[i]]
+    V <- if(type=="deviation") matrix(0,nrow(Xlist[[i]]),nrow(Xlist[[i]])) else
+      Xlist[[i]]%*%tcrossprod(object$vcov,Xlist[[i]])
     # RANDOM PART
     if(!is.null(ZPZlist)) {
       ZPZinvSigma <- ZPZlist[[i]] %*% tcrossprod(invUlist[[i]])
       blup <- blup + ZPZinvSigma%*%reslist[[i]]
       V <- V + ZPZlist[[i]] - ZPZinvSigma%*%ZPZlist[[i]]
     }
-    # BIND
+    # BIND (ADD OFFSET IF ANY)
     stderr <- sqrt(diag(V))
     seqlist <- lapply(seq(length(blup)/k),function(i) c(i*k-k+1,i*k))
     blup <- rbindList(lapply(seqlist, function(x) blup[x[1]:x[2],]), k)
@@ -110,8 +110,10 @@ function(object, se=FALSE, pi=FALSE, vcov=FALSE, pi.level=0.95, level, format,
     return(list(blup,V,stderr))
   })
 #
-  # EXTRACT, RE-ORDER, NAMES
-  blup <- rbindList(lapply(complist,"[[",1), k)[order(ord),,drop=FALSE]
+  # EXTRACT, COMPACT IN MATRICES (ADD OFFSET IF ANY), RE-ORDER, NAMES
+  blup <- rbindList(lapply(complist,"[[",1), k)
+  if(!is.null(offset) && type=="outcome") blup <- blup+offset
+  blup <- blup[order(ord),,drop=FALSE]
   V <- rbindList(lapply(complist,"[[",2), k*(k+1)/2)[order(ord),,drop=FALSE]
   stderr <- rbindList(lapply(complist,"[[",3), k)[order(ord),,drop=FALSE]
   colnames(blup) <- colnames(stderr) <- object$lab$k

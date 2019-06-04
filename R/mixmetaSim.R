@@ -19,7 +19,7 @@ function(y, S, Psi, random, data, nsim=1, seed=NULL, ...) {
   if(any(nay <- is.na(y))) stop("missing values not allowed in 'y'")
 #
   # RESET random AND EXTRACT RANDOM TERMS
-  random <- getRandom(random)
+  random <- getRandom(random,env=parent.frame())
   ranform <- getFullFormula(as.formula("~1",parent.frame()),random)
   randata <- if(is.null(random)) data.frame(seq(n)) else 
     model.frame(ranform, data, na.action=na.pass)

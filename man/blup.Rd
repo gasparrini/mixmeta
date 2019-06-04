@@ -17,9 +17,9 @@ blup(object, \dots)
 }
 
 \details{
-The generic method function \code{blup} calls specific method functions to produces (empirical) best linear unbiased predictions (BLUPs) from model objects. For random-effects models, predictions are given by the sum of the estimated mean outcomes from the fixed part of the model, plus study-specific deviations predicted as random effects.
+The generic method function \code{blup} calls specific method functions to produces (empirical) best linear unbiased predictions (BLUPs) from model objects.
 
-Predicted outcomes from \code{blup} are a shrunk version of unit-specific realizations, where unit-specific estimates borrow strength from the assumption of an underlying (potentially multivariate) distribution of outcomes in a (usually hypothetical) population. In practice, the results from \code{blup} represent a weighted average between population mean outcomes (estimated by the fixed part of the model) and unit-specific estimates.
+These predictions are a shrunk version of unit-specific realizations, where unit-specific estimates borrow strength from the assumption of an underlying (potentially multivariate) distribution in a (usually hypothetical) population. The amount of shrinkage depends from the relative size of the within and between-unit covariance matrices.
 }
 
 \value{

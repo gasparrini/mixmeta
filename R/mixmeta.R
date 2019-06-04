@@ -20,7 +20,7 @@ function(formula, S, data, random, method="reml", bscov="unstr", offset, subset,
   control <- do.call("mixmeta.control",control)
 #
   # RESET random AND bscov
-  random <- getRandom(random,method)
+  random <- getRandom(random,method,env=environment(formula))
   bscov <- getBSCov(bscov,random,method)
 #
 ################################################################################

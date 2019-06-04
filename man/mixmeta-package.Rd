@@ -88,7 +88,7 @@ For instance, many packages such as \pkg{metafor}, \pkg{meta}, \pkg{rmeta} provi
 
 Specific modelling extensions are also provided by other packages. For example, multivariate or multilevel models can be also be fitted using functions in \pkg{metafor} and \pkg{metaSEM}, while dose-response meta-analysis and meta-analysis of diagnostic measures can be performed using \pkg{dosresmeta} and \pkg{mada}, respectively.
 
-See the CRAN Task View \href{https://cran.r-project.org/web/views/MetaAnalysis.html}{Meta-Analysis} for a comprehensive illustration of methods available in various \R packages.
+See the CRAN Task View \href{https://cran.r-project.org/view=MetaAnalysis}{Meta-Analysis} for a comprehensive illustration of methods available in various \R packages.
 }
 
 \section{Warnings}{

@@ -1,5 +1,13 @@
 -----------------------------------
 
+### Changes in mixmeta 0.1.7  (04 June 2019)
+
+#### Minor changes
+
+  * Minor fixes.
+
+-----------------------------------
+
 ### Changes in mixmeta 0.1.6  (04 June 2019)
 
 #### Minor changes

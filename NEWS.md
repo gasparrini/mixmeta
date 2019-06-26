@@ -1,5 +1,16 @@
 -----------------------------------
 
+### Changes in mixmeta 0.1.8  (26 June 2019)
+
+#### Minor changes
+
+  * Fixed bug in mvmetaSim() when addSlist used.
+  
+  * Change in the usage of blup.mixmeta(), with "residual"" replacing
+    "deviation" in the argument 'type'.
+
+-----------------------------------
+
 ### Changes in mixmeta 0.1.7  (04 June 2019)
 
 #### Minor changes

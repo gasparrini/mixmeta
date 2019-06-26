@@ -48,7 +48,7 @@ function(y, S, Psi, random, data, nsim=1, seed=NULL, ...) {
 #
   # PRODUCE S AS A MATRIX OF VECTORIZED ENTRIES (IF NEEDED INPUT COVARIANCES)
   # CREATE ARTIFACTS FOR y AND control
-  S <- eval(substitute(S),data,parent.frame())
+  S <- if(missing(S)) NULL else eval(substitute(S),data,parent.frame())
   S <- getS(S,y,NULL,NULL,ord,Scor=addarg$Scor,checkPD=addarg$checkPD)
 #
   # CHECKS

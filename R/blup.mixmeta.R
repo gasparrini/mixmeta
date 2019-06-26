@@ -9,7 +9,7 @@ function(object, se=FALSE, pi=FALSE, vcov=FALSE, pi.level=0.95, type="outcome",
 # CHECK ARGUMENTS AND SET DEFAULTS
 #
   if(missing(format)) format <- ifelse(vcov&&object$dim$k>1,"list","matrix")
-  type <- match.arg(type,c("outcome","deviation"))
+  type <- match.arg(type,c("outcome","residual"))
   format <- match.arg(format,c("matrix","list"))
   aggregate <- match.arg(aggregate,c("stat","outcome"))
   if(missing(level)) level <- length(object$dim$q)
@@ -89,9 +89,9 @@ function(object, se=FALSE, pi=FALSE, vcov=FALSE, pi.level=0.95, type="outcome",
 #
   # COMPUTE THE COMPONENTS (POINT ESTIMATES, (CO)VARIANCE AND STANDARD ERRORS)
   complist <- lapply(seq(m),function(i) {
-    # FIXED PART (SET TO 0 IF DEVIATIONS)
-    blup <- if(type=="deviation") array(0,dim(predlist[[i]])) else predlist[[i]]
-    V <- if(type=="deviation") matrix(0,nrow(Xlist[[i]]),nrow(Xlist[[i]])) else
+    # FIXED PART (SET TO 0 IF RESIDUAL)
+    blup <- if(type=="residual") array(0,dim(predlist[[i]])) else predlist[[i]]
+    V <- if(type=="residual") matrix(0,nrow(Xlist[[i]]),nrow(Xlist[[i]])) else
       Xlist[[i]]%*%tcrossprod(object$vcov,Xlist[[i]])
     # RANDOM PART
     if(!is.null(ZPZlist)) {

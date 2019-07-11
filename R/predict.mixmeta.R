@@ -20,7 +20,7 @@ function(object, newdata, se=FALSE, ci=FALSE, vcov=FALSE, ci.level=0.95, format,
 #
   # MODEL MATRIX AND OFFSET
   X <- if(!new) model.matrix(object) else {
-    tt <- getFixTerms(object$formula, object$terms)
+    tt <- delete.response(object$terms)
     contr <- getContrXlev(tt, object$contrasts)
     xlev <- getContrXlev(tt, object$xlev)
     mf <- model.frame(tt, newdata, na.action=na.action, xlev=xlev)

@@ -17,6 +17,7 @@ export(
   qtest, qtest.mixmeta, print.qtest.mixmeta,
   logLik.mixmeta,
   coef.mixmeta, vcov.mixmeta,
+  terms.mixmeta,
   model.frame.mixmeta, model.matrix.mixmeta,
   na.omit.data.frame.mixmeta, na.exclude.data.frame.mixmeta,
   bdiagMat, vechMat, xpndMat
@@ -79,6 +80,7 @@ importFrom(utils, modifyList)
 S3method(blup, mixmeta)
 S3method(coef, mixmeta)
 S3method(logLik, mixmeta)
+S3method(terms, mixmeta)
 S3method(model.frame, mixmeta)
 S3method(model.matrix, mixmeta)
 S3method(predict, mixmeta)

@@ -51,8 +51,8 @@ function(formula, S, data, random, method="reml", bscov="unstr", offset, subset,
   if(length(na.action)) mf <- do.call(na.action, list(mf))
   # RETURN mf IF REQUIRED
   if(method=="model.frame") return(mf)
-  # SAVE TERMS (BOTH FIXED AND RANDOM)
-  terms <- attr(mf, "terms")
+  # SAVE TERMS (ONLY FIXED)
+  terms <- getFixTerms(formula,attr(mf,"terms"))
 #
 ################################################################################
 # GROUPS AND RE-ORDER
@@ -114,7 +114,7 @@ function(formula, S, data, random, method="reml", bscov="unstr", offset, subset,
   contrasts <- do.call(c,lapply(c(getList(X),getList(Z)), attr, "contrasts"))
   fit$contrasts <- if(length(contrasts)) 
     contrasts[!duplicated(names(contrasts))] else NULL
-  fit$xlevels <- .getXlevels(terms,mf)
+  fit$xlevels <- .getXlevels(attr(mf,"terms"),mf)
 #
   # ADD THE REST
   fit$na.action <- attr(mf,"na.action")

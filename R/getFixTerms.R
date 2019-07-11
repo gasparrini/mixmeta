@@ -11,5 +11,5 @@ function(formula, terms)  {
   ind <- which(!attr(terms,"term.labels")%in%attr(terms(formula),"term.labels"))
   if(length(ind)) terms <- terms[-ind]
 #
-  delete.response(terms)
+  terms
 }

@@ -7,7 +7,7 @@ function(object, ...) {
 ################################################################################
 #
   # DROP THE RANDOM TERMS AND CONTRASTS
-  tt <- getFixTerms(object$formula, object$terms)
+  tt <- object$terms
   contr <- getContrXlev(tt, object$contrasts)
 #
   # RUN THE DEFAULT METHOD

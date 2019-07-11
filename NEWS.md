@@ -1,5 +1,14 @@
 -----------------------------------
 
+### Changes in mixmeta 0.1.9  (11 July 2019)
+
+#### Minor changes
+
+  * Fixed problem with terms object. Now returned only for fixed-effects part,
+    and a new method function can extract either that or the full one.
+
+-----------------------------------
+
 ### Changes in mixmeta 0.1.8  (26 June 2019)
 
 #### Minor changes

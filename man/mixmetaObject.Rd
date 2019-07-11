@@ -29,7 +29,7 @@ Objects of class \code{"mixmeta"} are lists with defined components. Dimensions 
   \item{call }{ the function call.}
   \item{formula }{ the formula for the fixed-effects part of the model. See \code{\link{mixmetaFormula}}.}
   \item{model }{ the model frame used for fitting. Reported if \code{model=TRUE} in \code{\link{mixmeta}}. See \code{\link[=model.frame.mixmeta]{model.frame}}.}
-  \item{terms }{ the \code{\link{terms}} object representing both the fixed-effects and the random-effects parts of the fitted model.}
+  \item{terms }{ the \code{\link{terms}} object representing the fixed-effects part of the fitted model.}
   \item{contrasts }{ (where relevant) the contrasts used.}
   \item{xlevels }{ (where relevant) a record of the levels of the factors used in fitting.}
   \item{na.action }{ (where relevant) information returned by \code{\link[=model.frame.mixmeta]{model.frame}} on the special handling of NAs. See info on \code{\link[=na.omit.data.frame.mixmeta]{missing values}}.}
@@ -44,7 +44,7 @@ A number of methods functions are available for \code{mixmeta} objects, most of 
 
 Specifically-written method functions are defined for \code{\link[=predict.mixmeta]{predict}} (standard predictions) and \code{\link[=blup.mixmeta]{blup}} (best linear unbiased predictions). The method function \code{\link[=simulate.mixmeta]{simulate}} produces simulated outcomes from a fitted model, while \code{\link[=qtest.mixmeta]{qtest}} performs the Cochran Q test for heterogeneity. Other methods have been produced for \code{\link[=summary.mixmeta]{summary}}, \code{\link[=logLik.mixmeta]{logLik}}, \code{\link[=coef.mixmeta]{coef}}, and \code{\link[=vcov.mixmeta]{vcov}}.
 
-Specific methods are also available for \code{\link[=model.frame.mixmeta]{model.frame}} and \code{\link[=model.matrix.mixmeta]{model.matrix}}. In particular, the former produces the model frame (a data frame with special attributes storing the variables used for fitting) with the additional class \code{"data.frame.mixmeta"}. Methods \code{\link[=na.omit.data.frame.mixmeta]{na.omit}} and \code{\link[=na.exclude.data.frame.mixmeta]{na.exclude}} for this class are useful for the handling of missing values in \code{mixmeta} objects.
+Specific methods are also available for \code{\link[=model.frame.mixmeta]{model.frame}} and \code{\link[=model.matrix.mixmeta]{model.matrix}}. In particular, the former produces the model frame (a data frame with special attributes storing the variables used for fitting) with the additional class \code{"data.frame.mixmeta"}. A method \code{\link[=terms.mixmeta]{terms}} is also available for extracting the terms object (only for fixed-effects or full). Methods \code{\link[=na.omit.data.frame.mixmeta]{na.omit}} and \code{\link[=na.exclude.data.frame.mixmeta]{na.exclude}} for this class are useful for the handling of missing values in \code{mixmeta} objects.
 
 Printing functions for the objects of classes defined above are also provided. \code{anova} methods for performing tests in \code{mixmeta} objects are in development.
 

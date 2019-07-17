@@ -29,7 +29,7 @@ Objects of class \code{"mixmeta"} are lists with defined components. Dimensions 
   \item{call }{ the function call.}
   \item{formula }{ the formula for the fixed-effects part of the model. See \code{\link{mixmetaFormula}}.}
   \item{model }{ the model frame used for fitting. Reported if \code{model=TRUE} in \code{\link{mixmeta}}. See \code{\link[=model.frame.mixmeta]{model.frame}}.}
-  \item{terms }{ the \code{\link{terms}} object representing the fixed-effects part of the fitted model.}
+  \item{terms }{ the \code{\link[=terms.mixmeta]{terms}} object representing the fixed-effects part of the fitted model.}
   \item{contrasts }{ (where relevant) the contrasts used.}
   \item{xlevels }{ (where relevant) a record of the levels of the factors used in fitting.}
   \item{na.action }{ (where relevant) information returned by \code{\link[=model.frame.mixmeta]{model.frame}} on the special handling of NAs. See info on \code{\link[=na.omit.data.frame.mixmeta]{missing values}}.}

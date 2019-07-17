@@ -1,5 +1,17 @@
 -----------------------------------
 
+### Changes in mixmeta 0.2.0  (17 July 2019)
+
+#### Major changes
+
+  * Getting the package ready for CRAN.
+
+#### Minor changes
+
+  * Minor changes to the documentation
+
+-----------------------------------
+
 ### Changes in mixmeta 0.1.9  (11 July 2019)
 
 #### Minor changes

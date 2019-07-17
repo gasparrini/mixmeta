@@ -19,9 +19,9 @@ These method function returns the terms object that defines meta-analytical mode
 }
 
 \details{
-The \code{terms} object is produced by \code{\link{mixmeta}} when fitting the meta-analytical model, and stored as an attributed of the \code{\link[=model.frame.mixmeta]{model.frame}}. Note that this object consists of terms for both the fixed and random-effects parts, the latter including also the grouping factors.
+The \code{terms} object is produced by \code{\link{mixmeta}} when fitting the meta-analytical model, and stored as an attribute of the \code{\link[=model.frame.mixmeta]{model.frame}}. Note that this object consists of terms for both the fixed and random-effects parts, the latter including also the grouping factors.
 
-By default (\code{type="fixed"}), this method function removes the random-effects terms. This can then be used, for instance, for creating the \code{\link[=model.matrix.mixmeta]{model.matrix}} for the fixed effects. Otherwise (\code{type="full"}), the full set of terms is returned.
+By using the default \code{type="fixed"}, this method function removes the random-effects terms. This can then be used, for instance, for creating the \code{\link[=model.matrix.mixmeta]{model.matrix}} for the fixed effects. Otherwise with \code{type="full"}, the full set of terms is returned.
 }
 
 \value{

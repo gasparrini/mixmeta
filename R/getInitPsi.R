@@ -21,7 +21,7 @@ function(init, bscov, k, q, fix, checkPD=NULL)  {
     initPsi[ind] <- lapply(init,function(x) if(is.vector(x)) xpndMat(x) else x)
     # CHECK POSITIVE-DEFINITENESS (BY DEFAULT)
     if(is.null(checkPD) || checkPD)
-      initPsi <- checkPD(initPsi,force=FALSE,error=TRUE,label="initPsi")
+      initPsi <- getList(checkPD(initPsi,force=FALSE,error=TRUE,label="initPsi"))
     # CHECK DIMENSIONS
     if(any(sapply(seq_along(initPsi),function(i) any(dim(initPsi[[ind[i]]])!=k*q[i]))))
       stop("wrong dimennsions in initPsi")

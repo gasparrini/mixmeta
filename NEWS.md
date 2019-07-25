@@ -1,5 +1,15 @@
 -----------------------------------
 
+### Changes in mixmeta 0.2.2 (25 July 2019)
+
+#### Minor changes
+
+  * Fixed bug in getInitPsi() and getPisFix()
+  
+  * Reduction of examples in gliomas to match CRAN requirements
+  
+-----------------------------------
+
 ### Changes in mixmeta 0.2.1  (25 July 2019)
 
 #### Minor changes

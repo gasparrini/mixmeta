@@ -26,7 +26,7 @@ function(fix, bscov, k, q, checkPD=NULL)  {
   fix <- lapply(fix,function(x) if(is.vector(x)) xpndMat(x) else x)
   # CHECK POSITIVE-DEFINITENESS (BY DEFAULT)
   if(is.null(checkPD) || checkPD)
-    fix <- checkPD(fix,force=FALSE,error=TRUE,label="Psifix")
+    fix <- getList(checkPD(fix,force=FALSE,error=TRUE,label="Psifix"))
   # CHECK DIMENSIONS
   if(any(sapply(seq_along(fix),function(i) any(dim(fix[[i]])!=k*q[i]))))
     stop("wrong dimennsions in Psifix")

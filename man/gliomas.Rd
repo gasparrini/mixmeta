@@ -54,10 +54,6 @@ mod2 <- mixmeta(logOR~0+factor(time), S=logORvar, random=~1|study/unit,
   bscov=c("unstr","fixed"), data=gliomas, control=list(Psifix=list(unit=0)))
 print(summary(mod2), digits=2, report="var")
 
-# HETEROGENEOUS AR1 RANDOM EFFECTS, NO WITHIN-STUDY CORRELATION (MODEL 2)
-mod3 <- update(mod1, bscov="har1")
-print(summary(mod3), digits=2, report="var")
-
 # BUILD THE HETEROGENEOUS AR1 WITHIN-STUDY ERRORS (CORRELATION AT 0.61)
 cormat <- 0.61^abs(col(matrix(1,4,4)) - row(col(matrix(1,4,4))))
 addS <- lapply(split(sqrt(gliomas$logORvar), gliomas$study), inputcov, cormat)
@@ -68,16 +64,12 @@ mod4 <- mixmeta(logOR~0+factor(time), random=~0+factor(time)|study,
   bscov="diag", data=gliomas, control=list(addSlist=addS))
 print(summary(mod4), digits=2, report="var")
 
-# HAR1 RANDOM EFFECTS, HAR1 WITHIN-STUDY CORRELATION (MODEL 5)
-mod5 <- update(mod4, bscov="har1")
-print(summary(mod5), digits=2, report="var")
-
 # UNSTRUCTURED RANDOM EFFECTS, HAR1 WITHIN-STUDY CORRELATION (MODEL 6)
 mod6 <- update(mod4, bscov="unstr")
 print(summary(mod6), digits=2, report="var")
 
 # COMPARE THE FIT
-AIC(mod1, mod2, mod3, mod4, mod5, mod6)
+AIC(mod1, mod2, mod4, mod6)
 
 ### MORE FLEXIBLE MODELLING OF RANDOM EFFECTS
 

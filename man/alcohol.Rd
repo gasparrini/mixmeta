@@ -64,13 +64,10 @@ lin <- mixmeta(logrr ~ 0 + dose, random= ~ 0 + dose|id, data=sub, method="ml",
   control=list(addSlist=addS))
 summary(lin)
 
-# NATURAL SPLINES
-knots <- quantile(alcohol$dose, c(5,35,65,95)/100)
-spl <- ns(sub$dose, knots=knots[2:3], Bound=knots[c(1,4)])
-
 # ALLOWING NON-LINEARITY IN BOTH FIXED AND RANDOM PARTS
-nonlin <- mixmeta(logrr ~ 0 + spl, random= ~ 0 + spl|id, data=sub,
-  method="ml", control=list(addSlist=addS))
+nonlin <- mixmeta(logrr ~ 0 + ns(dose, knots=c(10,25)), data=sub, 
+  random= ~ 0 + ns(dose, knots=c(10,25))|id, method="ml",
+  control=list(addSlist=addS))
 summary(nonlin)
 
 # SIMPLIFY THE MODEL BY ASSUMING LINEARITY IN THE RANDOM PART
@@ -78,17 +75,20 @@ nonlin2 <- update(nonlin, random= ~ 0 + dose|id)
 summary(nonlin2)
 
 # FIXED-EFFECTS MODEL (TRICK: random TO DEFINE THE GROUPING, THEN FIX IT TO 0)
-nonlinfix <- mixmeta(logrr ~ 0 + spl, random= ~ 1|id, data=sub, method="ml",
-  bscov="fixed", control=list(addSlist=addS, Psifix=0))
+nonlinfix <- mixmeta(logrr ~ 0 + ns(dose, knots=c(10,25)), random= ~ 1|id,
+  data=sub, method="ml",bscov="fixed", control=list(addSlist=addS, Psifix=0))
 summary(nonlinfix)
 
 # COMPARE THE MODELS
 AIC(nocor, lin, nonlin, nonlin2, nonlinfix)
 
+# PREDICT THE RR FOR 12g/day FOM TWO MODELS
+exp(predict(nocor, newdata=data.frame(dose=12), ci=TRUE))
+exp(predict(lin, newdata=data.frame(dose=12), ci=TRUE))
+
 # PREDICT (RECREATE SPLINES FOR EASY CODING)
 predlin <- exp(predict(lin, newdata=data.frame(dose=0:60), ci=TRUE))
-newdata <- list(spl=ns(0:60, knots=knots[2:3], Bound=knots[c(1,4)]))
-prednonlin <- exp(predict(nonlin, newdata=newdata, ci=TRUE))
+prednonlin <- exp(predict(nonlin, newdata=data.frame(dose=0:60), ci=TRUE))
 
 # DISPLAY THE NON-LINEAR EFFECT
 col1 <- do.call(rgb, c(as.list(col2rgb("blue") / 255), list(0.2)))

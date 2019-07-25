@@ -1,5 +1,15 @@
 -----------------------------------
 
+### Changes in mixmeta 0.2.1  (25 July 2019)
+
+#### Minor changes
+
+  * Changes to example in dataset alcohol to show use of functions in formula
+  
+  * Minor changes to the documentation
+
+-----------------------------------
+
 ### Changes in mixmeta 0.2.0  (17 July 2019)
 
 #### Major changes

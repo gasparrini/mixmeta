@@ -26,7 +26,7 @@ install.packages("mixmeta")
 
 ### R code in published articles
 
-Several peer-reviewed articles and documents provide R code illustrating methodological developments of `mixmeta` or replicating substantive results using this package. An updated version of the code can be found at the GitHub (https://github.com/gasparrini) or personal web page (http://www.ag-myresearch.com) of the package maintainer.
+Peer-reviewed articles and documents will provide R code illustrating methodological developments of `mixmeta` or replicating substantive results using this package. An updated version of the code will be available the GitHub (https://github.com/gasparrini) or personal web page (http://www.ag-myresearch.com) of the package maintainer.
 
 ### References:
 

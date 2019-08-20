@@ -1,7 +1,7 @@
 Package: mixmeta
 Type: Package
-Version: 0.2.3
-Date: 2019-07-31
+Version: 1.0.1
+Date: 2019-08-20
 Title: An Extended Mixed-Effects Framework for Meta-Analysis
 Description: A collection of functions to perform various meta-analytical models
   through a unified mixed-effects framework, including standard univariate

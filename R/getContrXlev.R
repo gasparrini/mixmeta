@@ -11,6 +11,7 @@ function(formula, list)  {
   if(is.null(list)) return(NULL)
 #
   # RETURN CONSTRASTS RELATED TO TERMS IN THE FORMULA
-  ind <- names(list) %in% attr(terms(formula), "term.labels")
+  vars <- vapply(attr(terms(formula), "variables"), deparse, "")[-1L]
+  ind <- names(list) %in% vars
   if(any(ind)) list[ind] else NULL
 }

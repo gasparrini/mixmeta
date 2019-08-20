@@ -1,20 +1,34 @@
 -----------------------------------
 
+### Changes in mixmeta 1.0.1 (20 Aug 2019)
+
+#### Major changes
+
+  * Package now in CRAN.
+
+#### Minor changes
+
+  * Fixed bug in getFixTerms().
+
+  * Fixed bug in getContrXlev().
+
+-----------------------------------
+
 ### Changes in mixmeta 0.2.3 (31 July 2019)
 
 #### Minor changes
 
-  * Minor changes to the README
-
+  * Minor changes to the README.
+  
 -----------------------------------
 
 ### Changes in mixmeta 0.2.2 (25 July 2019)
 
 #### Minor changes
 
-  * Fixed bug in getInitPsi() and getPisFix()
+  * Fixed bug in getInitPsi() and getPisFix().
   
-  * Reduction of examples in gliomas to match CRAN requirements
+  * Reduction of examples in gliomas to match CRAN requirements.
   
 -----------------------------------
 
@@ -22,9 +36,9 @@
 
 #### Minor changes
 
-  * Changes to example in dataset alcohol to show use of functions in formula
+  * Changes to example in dataset alcohol to show use of functions in formula.
   
-  * Minor changes to the documentation
+  * Minor changes to the documentation.
 
 -----------------------------------
 
@@ -36,7 +50,7 @@
 
 #### Minor changes
 
-  * Minor changes to the documentation
+  * Minor changes to the documentation.
 
 -----------------------------------
 

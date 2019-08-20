@@ -7,9 +7,20 @@ function(formula, terms)  {
 ################################################################################
 # FUNCTION TO REMOVE RANDOM PART FROM TERMS OBJECT
 #
-  # IDENTIFY RANDOM TERMS AND, IF ANY, EXCLUDE THEM
-  ind <- which(!attr(terms,"term.labels")%in%attr(terms(formula),"term.labels"))
-  if(length(ind)) terms <- terms[-ind]
+  # RE-DEFINE TERMS FOR FIXED PART ONLY
+  # NB: NOT USING drop.terms AS HAS ISSUES WITH RE-ORDERING AND ':' INTERACTIONS
+  fixterms <- terms(formula)
 #
-  terms
+  # IDENTIFY DIFFERENT SETS OF VARIABLES
+  allvar <- vapply(attr(terms, "variables"), deparse, "")
+  fixvar <- vapply(attr(fixterms, "variables"), deparse, "")
+  ind <- allvar %in% fixvar
+#
+  # ADD ADDITIONAL ATTRIBUTES DEFINED BY model.frame, IF NEEDED
+  if(!is.null(predvars <- attr(terms, "predvars")) && sum(ind)>1L) 
+    attr(fixterms, "predvars") <- predvars[ind]
+  if(!is.null(dataClasses <- attr(terms, "predvars")) && sum(ind)>1L) 
+    attr(fixterms, "dataClasses") <- dataClasses[ind]
+#
+  fixterms
 }

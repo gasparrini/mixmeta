@@ -26,8 +26,8 @@ install.packages("mixmeta")
 
 ### R code in published articles
 
-Peer-reviewed articles and documents will provide R code illustrating methodological developments of `mixmeta` or replicating substantive results using this package. An updated version of the code will be available the GitHub (https://github.com/gasparrini) or personal web page (http://www.ag-myresearch.com) of the package maintainer.
+Peer-reviewed articles and documents provide R code illustrating methodological developments of `mixmeta` or replicating substantive results using this package. An updated version of the code will be available the GitHub (https://github.com/gasparrini) or personal web page (http://www.ag-myresearch.com) of the package maintainer.
 
 ### References:
 
-Sera F, Gasparrini A. An extended mixed-eﬀects framework for meta-analysis. *Statistics in Medicine*. 2019; In submission.
+Sera F, Gasparrini A. An extended mixed-eﬀects framework for meta-analysis. *Statistics in Medicine*. 2019; DOI: 10.1002/sim.8362 [freely available [here](http://www.ag-myresearch.com/2019_sera_statmed.html)]

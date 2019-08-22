@@ -1,5 +1,15 @@
 -----------------------------------
 
+### Changes in mixmeta 1.0.2 (21 Aug 2019)
+
+#### Minor changes
+
+  * Change in examples.
+  
+  * Updated references.
+
+-----------------------------------
+
 ### Changes in mixmeta 1.0.1 (20 Aug 2019)
 
 #### Major changes

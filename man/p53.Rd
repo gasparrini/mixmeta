@@ -32,7 +32,7 @@ Jackson D, Riley R, White IR (2011). Multivariate meta-analysis: Potential and p
 
 Tandon S, Tudur-Smith C, Riley RD, et al. (2010). A systematic review of p53 as a prognostic factor of survival in squamous cell carcinoma of the four main anatomical subsites of the head and neck. \emph{Cancer Epidemiology, Biomarkers and Prevention}. \bold{19}(2):574--587.
 
-Sera F, Gasparrini A (2019). An extended mixed-effects framework for meta-analysis.\emph{Statistics in Medicine}. In submission.
+Sera F, Gasparrini A (2019). An extended mixed-effects framework for meta-analysis.\emph{Statistics in Medicine}. DOI: 10.1002/sim.8362 [Freely available \href{http://www.ag-myresearch.com/2019_sera_statmed.html}{\bold{here}}].
 }
 
 \examples{

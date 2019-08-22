@@ -42,7 +42,7 @@ As usual, the \code{print} method function for class \code{"qtest.mixmeta"} does
 }
 
 \references{
-Sera F, Gasparrini A (2019). An extended mixed-effects framework for meta-analysis.\emph{Statistics in Medicine}. In submission.
+Sera F, Gasparrini A (2019). An extended mixed-effects framework for meta-analysis.\emph{Statistics in Medicine}. DOI: 10.1002/sim.8362 [Freely available \href{http://www.ag-myresearch.com/2019_sera_statmed.html}{\bold{here}}].
 
 Cochran WG (1950). The comparison of percentages in matched samples". \emph{Biometrika}. \bold{37}(3/4):256--266.
 }

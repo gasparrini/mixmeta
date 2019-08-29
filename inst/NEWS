@@ -1,6 +1,14 @@
 -----------------------------------
 
-### Changes in mixmeta 1.0.2 (21 Aug 2019)
+### Changes in mixmeta 1.0.4 (29 Aug 2019)
+
+#### Minor changes
+
+  * Fixed authorship in main reference.
+
+-----------------------------------
+
+### Changes in mixmeta 1.0.3 (21 Aug 2019)
 
 #### Minor changes
 

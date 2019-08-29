@@ -2,7 +2,7 @@
 
 ## An Extended Mixed-Effects Modelling Framework for Meta-Analysis
 
-The package consists of a collection of functions to perform various meta-analytical models within a unified mixed-effects framework, including standard univariate fixed and random-effects meta-analysis and meta-regression, and non-standard extensions such as multivariate, multilevel, longitudinal, and dose-response models. The methodology is illustrated in detail in the article by Sera \& Gasparrini (see below).
+The package consists of a collection of functions to perform various meta-analytical models within a unified mixed-effects framework, including standard univariate fixed and random-effects meta-analysis and meta-regression, and non-standard extensions such as multivariate, multilevel, longitudinal, and dose-response models. The methodology is illustrated in detail in the article by Sera et al (see below).
 
 ### Info on the `mixmeta` package
 
@@ -30,4 +30,4 @@ Peer-reviewed articles and documents provide R code illustrating methodological 
 
 ### References:
 
-Sera F, Gasparrini A. An extended mixed-eﬀects framework for meta-analysis. *Statistics in Medicine*. 2019; DOI: 10.1002/sim.8362 [freely available [here](http://www.ag-myresearch.com/2019_sera_statmed.html)]
+Sera F, Armstrong B, Blangiardo M, Gasparrini A. An extended mixed-eﬀects framework for meta-analysis. *Statistics in Medicine*. 2019; DOI: 10.1002/sim.8362 [freely available [here](http://www.ag-myresearch.com/2019_sera_statmed.html)]

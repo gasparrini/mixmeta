@@ -42,7 +42,7 @@ In the presence of missing values in the outcomes \code{y} of the fitted model, 
 }
 
 \references{
-Sera F, Gasparrini A (2019). An extended mixed-effects framework for meta-analysis.\emph{Statistics in Medicine}. DOI: 10.1002/sim.8362 [Freely available \href{http://www.ag-myresearch.com/2019_sera_statmed.html}{\bold{here}}].
+Sera F, Armstrong B, Blangiardo M, Gasparrini A (2019). An extended mixed-effects framework for meta-analysis.\emph{Statistics in Medicine}. DOI: 10.1002/sim.8362 [Freely available \href{http://www.ag-myresearch.com/2019_sera_statmed.html}{\bold{here}}].
 
 Verbeke G, Molenberghs G. \emph{Linear Mixed Models for Longitudinal Data}. Springer; 1997.
 }

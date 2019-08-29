@@ -1,17 +1,19 @@
 citEntry(
   entry = "Article",
- 	author = personList(as.person("F. Sera"),as.person("A. Gasparrini")),
+ 	author = personList(as.person("F. Sera"),as.person("B. Armstrong"), 
+ 	as.person("M. Blangiardo"),as.person("A. Gasparrini")),
 	title = "An extended mixed-effects framework for meta-analysis",
  	journal = "Statistics in Medicine",
 	volume = "",
 	number = "",
-	pages= "In submission",
+	pages= "DOI: 10.1002/sim.8362",
 	year = "2019",
+	url = "http://www.ag-myresearch.com/2019_sera_statmed.html",
 	textVersion = 
-	  paste("Sera F., Gasparrini A. (2019).",
+	  paste("Sera F., Armstrong B, Blangiardo M, Gasparrini A. (2019).",
 	    "An extended mixed-effects framework for meta-analysis.",
       "Statistics in Medicine. In submission.",
-      "URL "),
+      "URL: http://www.ag-myresearch.com/2019_sera_statmed.html"),
     header = "To cite the R package 'mixmeta' in publications use:",
     footer = "A BibTeX entry for LaTeX users is returned by: toBibtex(citation('mixmeta'))"
 )

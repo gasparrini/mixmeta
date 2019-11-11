@@ -30,7 +30,7 @@ The absolute risk is simply the difference in risk, which is computed empiricall
 \source{
 Thompson SG, Turner RM, Warn DE (2001). Multilevel models for meta-analysis, and their application to absolute risk differences. \emph{Statistical Methods in Medical Research}. \bold{10}(6):375--392.
 
-Sera F, Armstrong B, Blangiardo M, Gasparrini A (2019). An extended mixed-effects framework for meta-analysis.\emph{Statistics in Medicine}. DOI: 10.1002/sim.8362 [Freely available \href{http://www.ag-myresearch.com/2019_sera_statmed.html}{\bold{here}}].
+Sera F, Armstrong B, Blangiardo M, Gasparrini A (2019). An extended mixed-effects framework for meta-analysis.\emph{Statistics in Medicine}. 2019;38(29):5429-5444. [Freely available \href{http://www.ag-myresearch.com/2019_sera_statmed.html}{\bold{here}}].
 }
 
 \note{

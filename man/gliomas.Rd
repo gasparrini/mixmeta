@@ -32,7 +32,7 @@ Musekiwa A, et al (2012). Meta-analysis of effect sizes reported at multiple tim
 
 Trikalinos TA, Olkin I (2012). Meta-analysis of effect sizes reported at multiple time points: a multivariate approach. \emph{Clinical Trials}. \bold{9}(5):610--620.
 
-Sera F, Armstrong B, Blangiardo M, Gasparrini A (2019). An extended mixed-effects framework for meta-analysis.\emph{Statistics in Medicine}. DOI: 10.1002/sim.8362 [Freely available \href{http://www.ag-myresearch.com/2019_sera_statmed.html}{\bold{here}}].
+Sera F, Armstrong B, Blangiardo M, Gasparrini A (2019). An extended mixed-effects framework for meta-analysis.\emph{Statistics in Medicine}. 2019;38(29):5429-5444. [Freely available \href{http://www.ag-myresearch.com/2019_sera_statmed.html}{\bold{here}}].
 }
 
 \note{

@@ -30,4 +30,4 @@ Peer-reviewed articles and documents provide R code illustrating methodological 
 
 ### References:
 
-Sera F, Armstrong B, Blangiardo M, Gasparrini A. An extended mixed-eﬀects framework for meta-analysis. *Statistics in Medicine*. 2019; DOI: 10.1002/sim.8362 [freely available [here](http://www.ag-myresearch.com/2019_sera_statmed.html)]
+Sera F, Armstrong B, Blangiardo M, Gasparrini A. An extended mixed-eﬀects framework for meta-analysis. *Statistics in Medicine*. 2019;38(29):5429-5444 [freely available [here](http://www.ag-myresearch.com/2019_sera_statmed.html)]

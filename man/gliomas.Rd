@@ -71,6 +71,7 @@ print(summary(mod6), digits=2, report="var")
 # COMPARE THE FIT
 AIC(mod1, mod2, mod4, mod6)
 
+\dontrun{
 ### MORE FLEXIBLE MODELLING OF RANDOM EFFECTS
 
 # RE-RUN BEST FITTING MODEL WITH ML (ALLOWS TESTING OF FIXED EFFECTS)
@@ -82,7 +83,7 @@ modnew <- mixmeta(logOR~time, random=~I(time-15)|study, bscov="diag",
 print(summary(modnew), digits=2, report="var")
 
 # COMPARE
-AIC(mod4ml, modnew)
+AIC(mod4ml, modnew)}
 
 
 ### SEE help(dbs) FOR A COMPLEMENTARY EXAMPLE

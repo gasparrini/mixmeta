@@ -1,5 +1,13 @@
 -----------------------------------
 
+### Changes in mixmeta 1.0.7 (09 Dec 2019)
+
+#### Minor changes
+
+  * Fixed problems with long-running examples preventing passing CRAN tests.
+
+-----------------------------------
+
 ### Changes in mixmeta 1.0.6 (09 Dec 2019)
 
 #### Minor changes

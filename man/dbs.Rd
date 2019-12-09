@@ -59,10 +59,11 @@ addS <- lapply(seq(nrow(S)), function(i) inputcov(sqrt(S[i,]), cormat))
 addS <- lapply(addS, function(x) x[apply(!is.na(x),1,any), apply(!is.na(x),2,any)])
 
 # ADD HAR1 WITHIN-STUDY ERRORS (TABLE 1, FOURTH MODEL) USING addSlist
+\dontrun{
 mv4 <- mixmeta(y ~ 1, bscov="har1", data=dbs, control=list(addSlist=addS))
-print(summary(mv4), digits=1, report="var")
+print(summary(mv4), digits=1, report="var")}
 
-
+\dontrun{
 ### USE A LONG FORMAT, AS MORE FLEXIBLE AND ALLOWS MORE COMPLEX MODELS
 
 # RESHAPE THE DATASET
@@ -83,7 +84,7 @@ print(summary(mv2), digits=1, report="var")
 mv4plus <- mixmeta(eff ~ factor(time) - 1 + I(duration-14) + I(baseline-52),
   random = ~ factor(time) -1 | author, bscov="har1", data=long,
   control=list(addSlist=addS))
-print(summary(mv4plus), digits=1, report="var")
+print(summary(mv4plus), digits=1, report="var")}
 
 
 ### SEE help(gliomas) FOR A COMPLEMENTARY EXAMPLE

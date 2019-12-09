@@ -1,5 +1,22 @@
 -----------------------------------
 
+### Changes in mixmeta 1.0.6 (09 Dec 2019)
+
+#### Minor changes
+
+  * Change in mixmeta() to comply with changes in R 4.0.0 regarding the new
+    class for matrix objects, now including 'array'.
+
+-----------------------------------
+
+### Changes in mixmeta 1.0.5 (11 Nov 2019)
+
+#### Minor changes
+
+  * Main reference updated.
+
+-----------------------------------
+
 ### Changes in mixmeta 1.0.4 (29 Aug 2019)
 
 #### Minor changes

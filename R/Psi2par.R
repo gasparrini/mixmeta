@@ -49,7 +49,7 @@ function(Psi, bscov, k, q, fix) {
       # PROPORTIONAL: THE LOGARITHM OF THE MEAN RATIO OF THE DIAGONAL ELEMENTS
       prop = {
         if(is.list(fix)) fix <- fix[[names(bscov)[[i]]]]
-        log(mean(diag(fix/Psi[[i]])))
+        log(mean(diag(Psi[[i]]/fix)))
       },
       # KNOWN CORRELATION: SAME AS DIAGONAL
       cor = log(diag(Psi[[i]])),

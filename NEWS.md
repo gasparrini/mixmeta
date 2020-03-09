@@ -1,5 +1,14 @@
 -----------------------------------
 
+### Changes in mixmeta 1.0.8 (09 March 2020)
+
+#### Minor changes
+
+  * Bugs fixed in getGroups() and Psi2par(). The former in particular could lead
+    to issues.
+
+-----------------------------------
+
 ### Changes in mixmeta 1.0.7 (09 Dec 2019)
 
 #### Minor changes

@@ -19,7 +19,7 @@ function(random, data)  {
 #
   # DEFINE GROUPING THROUGH FACTORS, ACCOUNTING FOR INTERNAL NESTING
   # NB: LEVELS FROM 2 ON ALWAYS NESTED IN 1, AS THE LATTER DEFINES THE LISTS
-  groups[[1]] <- as.factor(groups[[1]])
+  groups[[1]] <- factor(groups[[1]])
   if((len <- length(groups))>1L) for(i in 2:len)
     groups[[i]] <- factor(paste(groups[[i-1]],groups[[i]],sep="-"))
 #

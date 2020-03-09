@@ -37,7 +37,7 @@ Jackson D, Riley R, White IR (2011). Multivariate meta-analysis: Potential and p
 
 White IR (2009). Multivariate random-effects meta-analysis. \emph{Stata Journal}. \bold{9}(1):40--56.
 
-White IR (2011). Multivariate random-effects meta-regression: updates to mixmeta. \emph{Stata Journal}. \bold{11}(2):255-270.
+White IR (2011). Multivariate random-effects meta-regression: updates to mvmeta. \emph{Stata Journal}. \bold{11}(2):255-270.
 }
 
 \author{Antonio Gasparrini <\email{antonio.gasparrini@lshtm.ac.uk}>}

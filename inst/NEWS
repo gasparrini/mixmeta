@@ -1,5 +1,13 @@
 -----------------------------------
 
+### Changes in mixmeta 1.0.9 (27 May 2020)
+
+#### Minor changes
+
+  * Clarifications on documentation regarding grouping and addSlist.
+
+-----------------------------------
+
 ### Changes in mixmeta 1.0.8 (09 March 2020)
 
 #### Minor changes

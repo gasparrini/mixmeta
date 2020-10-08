@@ -36,7 +36,7 @@ function(formula, S, data, random, method="reml", bscov="unstr", offset, subset,
   mcall[[1L]] <- as.name("model.frame")
 #
   # CREATE THE FULL FORMULA INCLUDING FIXED AND RANDOM TERMS
-  mcall$formula <- getFullFormula(formula, random)
+  mcall$formula <- getFullFormula(formula, random, data)
 #
 ################################################################################
 # DERIVE THE MODEL FRAME (SPECIAL HANDLING OF MISSING VALUES) AND TERMS
@@ -52,13 +52,13 @@ function(formula, S, data, random, method="reml", bscov="unstr", offset, subset,
   # RETURN mf IF REQUIRED
   if(method=="model.frame") return(mf)
   # SAVE TERMS (ONLY FIXED)
-  terms <- getFixTerms(formula,attr(mf,"terms"))
+  terms <- getFixTerms(formula, attr(mf,"terms"), data)
 #
 ################################################################################
 # GROUPS AND RE-ORDER
 #
   # DEFINE GROUPING FACTORS
-  groups <- getGroups(random,mf)
+  groups <- getGroups(random, mf)
 #
   # RE-ORDER
   ord <- do.call(order,lapply(seq(ncol(groups)),function(i) groups[,i]))
@@ -70,8 +70,8 @@ function(formula, S, data, random, method="reml", bscov="unstr", offset, subset,
 #
   # GET DESIGN MATRIX AND RESPONSE (AS MATRIX) FOR FIXED PART
   y <- as.matrix(model.response(mf,"numeric"))
-  fixcontr <- getContrXlev(formula[c(1L,3L)], contrasts)
-  X <- model.matrix(formula[c(1L,3L)], mf, fixcontr)
+  fixcontr <- getContrXlev(terms, contrasts)
+  X <- model.matrix(terms, mf, fixcontr)
   offset <- as.vector(model.offset(mf))
   if(!is.null(offset)) {
     if(length(offset)!=NROW(y))

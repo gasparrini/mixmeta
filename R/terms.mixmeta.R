@@ -10,15 +10,8 @@ function(x, type="fixed", ...)  {
   # CHECK TYPE
   type <- match.arg(type, c("fixed","full"))
 #
-  # EXTRACT FULL LIST OF TERMS (FIXED+RANDOM) FROM MODEL FRAME
-  tt <- attr(model.frame(x), "terms")
-#
-  # IF FULL, RETURN
-  if(type=="full") return(tt)
-#
-  # ELSE, IF FIXED TERMS ONLY, REMOVE
-  ind <- which(!attr(tt,"term.labels")%in%attr(terms(x$formula),"term.labels"))
-  if(length(ind)) tt <- tt[-ind]
+  # SELECT
+  tt <- if(type=="full") attr(model.frame(x), "terms") else x$terms
 #
   tt
 }

@@ -1,5 +1,14 @@
 -----------------------------------
 
+### Changes in mixmeta 1.1.0 (08 Oct 2020)
+
+#### Minor changes
+
+  * Fix for formula with '~.' and related terms.
+  * Added method formula() (not exported).
+
+-----------------------------------
+
 ### Changes in mixmeta 1.0.9 (27 May 2020)
 
 #### Minor changes

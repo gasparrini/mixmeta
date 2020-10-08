@@ -41,7 +41,7 @@ export(
 # NOT EXPORTED METHODS
 #################
 #
-# extractAIC.mixmeta, nobs.mixmeta, drop1.mixmeta, add1.mixmeta
+# formula, extractAIC.mixmeta, nobs.mixmeta, drop1.mixmeta, add1.mixmeta
 #
 #################
 # NOT USED
@@ -81,6 +81,7 @@ S3method(blup, mixmeta)
 S3method(coef, mixmeta)
 S3method(logLik, mixmeta)
 S3method(terms, mixmeta)
+S3method(formula, mixmeta)
 S3method(model.frame, mixmeta)
 S3method(model.matrix, mixmeta)
 S3method(predict, mixmeta)

@@ -4,10 +4,7 @@
 
 #### Minor changes
 
-  * Fixed bug in summary.mixmeta(). This caused issues with the incoming R
-    version and raised a flag with R-devel.
-  * Fixed bug in getFixTerms().
-  * Update README.
+  * Fixed bug in coef.mixmeta() with format="matrix" (thanks to Pierre Masselot).
 
 -----------------------------------
 

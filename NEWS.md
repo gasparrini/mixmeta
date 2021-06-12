@@ -1,5 +1,32 @@
 -----------------------------------
 
+### Changes in mixmeta 1.1.3 (12 June 2021)
+
+#### Minor changes
+
+  * Fixed bug in coef.mixmeta() with format="matrix" (thanks to Pierre Masselot).
+
+-----------------------------------
+
+### Changes in mixmeta 1.1.2 (15 May 2021)
+
+#### Minor changes
+
+  * Fixed bug in summary.mixmeta(). This caused issues with the incoming R
+    version and raised a flag with R-devel.
+  * Fixed bug in getFixTerms().
+  * Update README.
+
+-----------------------------------
+
+### Changes in mixmeta 1.1.1 (18 Mar 2021)
+
+#### Minor changes
+
+  * Fix bug in getFixFormula().
+
+-----------------------------------
+
 ### Changes in mixmeta 1.1.0 (08 Oct 2020)
 
 #### Minor changes

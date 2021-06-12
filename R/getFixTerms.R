@@ -20,7 +20,7 @@ function(formula, terms, data=NULL)  {
   if(!is.null(predvars <- attr(terms, "predvars")) && sum(ind)>1L) 
     attr(fixterms, "predvars") <- predvars[ind]
   if(!is.null(dataClasses <- attr(terms, "dataClasses")) && sum(ind)>1L) 
-    attr(fixterms, "dataClasses") <- dataClasses[ind]
+    attr(fixterms, "dataClasses") <- dataClasses[ind[-1]]
 #
   fixterms
 }

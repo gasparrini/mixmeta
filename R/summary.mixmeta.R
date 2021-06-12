@@ -10,8 +10,8 @@ function(object, ci.level=0.95, ...) {
   if(ci.level<=0||ci.level>=1) stop("'ci.level' must be within 0 and 1")
 #
   # EXTRACT QUANTITIES
-  ind <- as.numeric(matrix(seq(object$coefficients),object$dim$p,object$dim$k,
-    byrow=TRUE))
+  ind <- as.numeric(matrix(seq(length(object$coefficients)),object$dim$p,
+    object$dim$k,byrow=TRUE))
   coef <- object$coefficients[ind]
   vcov <- object$vcov[ind,ind,drop=FALSE]
   dim <- object$dim

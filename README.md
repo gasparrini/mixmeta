@@ -1,6 +1,10 @@
 -----------------------------------
 
-## An Extended Mixed-Effects Modelling Framework for Meta-Analysis
+## mixmeta: an Extended Mixed-Effects Modelling Framework for Meta-Analysis
+
+[![CRAN Version](https://www.r-pkg.org/badges/version/mixmeta)](https://cran.r-project.org/package=mixmeta)
+[![Monthly Downloads](https://cranlogs.r-pkg.org/badges/mixmeta)](https://cranlogs.r-pkg.org/badges/mixmeta)
+[![Total Downloads](https://cranlogs.r-pkg.org/badges/grand-total/mixmeta)](https://cranlogs.r-pkg.org/badges/grand-total/mixmeta)
 
 The package consists of a collection of functions to perform various meta-analytical models within a unified mixed-effects framework, including standard univariate fixed and random-effects meta-analysis and meta-regression, and non-standard extensions such as multivariate, multilevel, longitudinal, and dose-response models. The methodology is illustrated in detail in the article by Sera et al (see below).
 

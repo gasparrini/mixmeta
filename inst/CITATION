@@ -12,7 +12,7 @@ citEntry(
 	textVersion = 
 	  paste("Sera F., Armstrong B, Blangiardo M, Gasparrini A. (2019).",
 	    "An extended mixed-effects framework for meta-analysis.",
-      "Statistics in Medicine. In submission.",
+      "Statistics in Medicine. 2019;38(29):5429-5444.",
       "URL: http://www.ag-myresearch.com/2019_sera_statmed.html"),
     header = "To cite the R package 'mixmeta' in publications use:",
     footer = "A BibTeX entry for LaTeX users is returned by: toBibtex(citation('mixmeta'))"

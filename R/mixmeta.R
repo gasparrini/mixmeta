@@ -10,7 +10,7 @@ function(formula, S, data, random, method="reml", bscov="unstr", offset, subset,
 #
   # RESET FORMULA (FIXED), PRESERVING THE ENVIRONMENT
   if (missing(data)) data <- parent.frame()
-  if(!inherits(eval(substitute(formula),data),"formula")) {
+  if(!inherits(eval(substitute(formula),data,parent.frame()),"formula")) {
     formula <- as.formula(paste(deparse(substitute(formula),width.cutoff=499L),
       "~ 1"),env=parent.frame())
   } else if(length(formula)!=3) stop("'formula' must be a two-sided formula")

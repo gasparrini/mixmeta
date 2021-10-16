@@ -1,5 +1,13 @@
 -----------------------------------
 
+### Changes in mixmeta 1.2.0 (10 Oct 2021)
+
+#### Minor changes
+
+  * Fixed issue with calling environment in formula reset of mixmeta().
+
+-----------------------------------
+
 ### Changes in mixmeta 1.1.3 (12 June 2021)
 
 #### Minor changes

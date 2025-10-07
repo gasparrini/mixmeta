@@ -1,21 +1,29 @@
 Package: mixmeta
 Type: Package
-Version: 1.2.0
-Date: 2021-10-10
+Version: 1.2.1
+Date: 2025-10-07
 Title: An Extended Mixed-Effects Framework for Meta-Analysis
 Description: A collection of functions to perform various meta-analytical models
   through a unified mixed-effects framework, including standard univariate
   fixed and random-effects meta-analysis and meta-regression, and non-standard
   extensions such as multivariate, multilevel, longitudinal, and dose-response
   models.
-Author: Antonio Gasparrini [aut, cre], Francesco Sera [aut]
 Maintainer: Antonio Gasparrini <antonio.gasparrini@lshtm.ac.uk>
 Authors@R: c(
-  person("Antonio","Gasparrini",role=c("aut","cre"),email="antonio.gasparrini@lshtm.ac.uk"),
-  person("Francesco","Sera",role="aut",email="francesco.sera@lshtm.ac.uk"))
+	person(given = "Antonio",
+	  family = "Gasparrini",
+	  role = c("cre", "aut", "cph"),
+	  email = "antonio.gasparrini@lshtm.ac.uk",
+	  comment = c(ORCID = "0000-0002-2271-3568")),
+  person(given = "Francesco",
+    family = "Sera",
+    role = c("aut"),
+    email = "francesco.sera@unifi.it")
+	)
 Imports: stats, graphics, grDevices, utils
 Depends: R (>= 3.5.0)
-Suggests: metafor, meta, rmeta, dosresmeta, nlme, MASS, dlnm
+Suggests: metafor, dosresmeta, nlme, MASS, dlnm
 URL: https://github.com/gasparrini/mixmeta, http://www.ag-myresearch.com/package-mixmeta
-License: GPL (>=2)
+License: GPL (>= 3)
 LazyData: yes
+Encoding: UTF-8

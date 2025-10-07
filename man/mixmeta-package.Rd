@@ -112,7 +112,7 @@ Lindstrom MJ and Bates DM (1988). Newton-Raphson and EM algorithms for linear mi
 
 Goldstein H (1986). Multilevel mixed linear model analysis using iterative generalized least squares. \emph{Biometrika}. \bold{73}(1):43--56.
 
-Goldstein H (1992). Efficient computational procedures for the estimation of parameters in multilevel models based on iterative generalized least squares. \emph{Computational Statistics \& Data Analysis}. \bold{13}(1):63--71.
+Goldstein H (1992). Efficient computational procedures for the estimation of parameters in multilevel models based on iterative generalized least squares. \emph{Computational Statistics & Data Analysis}. \bold{13}(1):63--71.
 
 Stram DO (1996). Meta-analysis of published data using a linear mixed-effects model. \emph{Biometrics}. \bold{52}(2):536--544.
 

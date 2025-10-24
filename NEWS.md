@@ -1,11 +1,12 @@
 -----------------------------------
 
-### Changes in mixmeta 1.2.1 (07 Oct 2025)
+### Changes in mixmeta 1.2.2 (07 Oct 2025)
 
 #### Minor changes
 
   * Fixed RD parsing issues (thanks to Michael Chirico).
   * Updated description.
+  * Updated citation.
 
 -----------------------------------
 
